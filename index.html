@@ -2426,6 +2426,301 @@ footer {
 
 /* === END ENERGY PASS === */
 
+
+/* =========================================================
+   MOBILE OPTIMIZATION PASS (overrides earlier rules)
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* Body breathing room — push content above the sticky CTA */
+  body { padding-bottom: 90px; }
+
+  /* HERO: simpler, gorilla becomes tiny corner accent, video readable */
+  .hero {
+    min-height: 92svh;
+    padding: 90px 20px 32px;
+    align-items: flex-end;
+  }
+  .hero-overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(10,10,10,0.55) 0%,
+        rgba(10,10,10,0.25) 35%,
+        rgba(10,10,10,0.85) 100%);
+  }
+  .hero-gorilla {
+    width: 130px;
+    height: 130px;
+    top: 90px;
+    right: 16px;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    opacity: 0.55;
+    animation: none;
+  }
+  .hero-gorilla img { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6)); }
+  .hero-gorilla-ring { inset: -5%; border-width: 1px; }
+  .hero-gorilla-glow { display: none; }
+  .hero-gorilla-badge { display: none; }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    padding: 7px 12px;
+    margin-top: 0;
+  }
+  .hero-title-new {
+    font-size: clamp(40px, 11vw, 60px);
+    line-height: 0.92;
+    margin: 18px 0 20px;
+  }
+  .hero-sub {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-actions .btn {
+    padding: 16px 20px;
+    font-size: 14px;
+    width: 100%;
+    min-height: 52px;
+  }
+
+  /* Hero counter strip: 2x2 grid with bigger numbers */
+  .hero-counter {
+    position: static;
+    margin: 28px 0 0;
+    padding: 16px 6px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    border-radius: 14px;
+    gap: 0;
+  }
+  .hc-divider { display: none; }
+  .hc-item {
+    padding: 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .hc-item:nth-child(1) { border-right: 1px solid rgba(255,255,255,0.07); }
+  .hc-item:nth-child(3) {
+    border-right: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 0;
+  }
+  .hc-item:nth-child(5),
+  .hc-item:nth-child(7) { border-bottom: 0; }
+  .hc-num { font-size: 30px; }
+  .hc-num span { font-size: 14px; }
+  .hc-label { font-size: 9px; letter-spacing: 0.2em; margin-top: 4px; }
+
+  /* MARQUEE: smaller text, less padding */
+  .marquee {
+    font-size: 14px;
+    padding: 12px 0;
+    letter-spacing: 0.05em;
+  }
+  .marquee-track { gap: 24px; }
+  .marquee-track span { gap: 24px; }
+  .marquee-track .dot { width: 6px; height: 6px; }
+
+  /* SECTION SPACING: tighter, breathes better */
+  section { padding: 70px 20px !important; }
+  .section-tag { font-size: 10px; letter-spacing: 0.25em; margin-bottom: 14px; }
+  .section-title {
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 0.95;
+  }
+  .section-lead { font-size: 15px; line-height: 1.55; }
+  .section-head {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  /* SERVICES: comfortable 1-column with bigger media */
+  .services-grid { grid-template-columns: 1fr !important; gap: 16px; }
+  .service-card { border-radius: 16px; }
+  .service-media { aspect-ratio: 16/10; }
+  .service-card h3 { font-size: 26px; }
+  .service-content { padding: 22px 22px 26px; }
+
+  /* SERVICE AREA / MAP: stack and shrink */
+  .service-area { padding: 60px 16px !important; }
+  .map-wrap { grid-template-columns: 1fr; gap: 24px; }
+  .map-frame { padding: 12px; border-radius: 14px; }
+  .socal-map { font-size: 10px; }
+  .map-cities-list { text-align: left; }
+  .mcl-title { font-size: 22px; margin-bottom: 14px; }
+  .mcl-list li {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+  .mcl-tag { font-size: 9px; padding: 3px 7px; }
+  .mcl-cta {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    padding: 18px;
+    border-radius: 12px;
+    min-height: 64px;
+    justify-content: center;
+  }
+
+  /* PROCESS steps: vertical with clean borders */
+  .process-flow { grid-template-columns: 1fr; gap: 0; }
+  .step {
+    padding: 24px 0;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step:last-child { border-bottom: 0; }
+  .step-num em { font-size: 36px; }
+  .step h4 { font-size: 20px; }
+
+  /* WORK tile featured: comfortable on mobile */
+  .work-grid { grid-template-columns: 1fr; }
+  .work-tile.featured {
+    aspect-ratio: 4/3 !important;
+    min-height: auto !important;
+    border-radius: 16px;
+  }
+  .work-tile.featured .work-title { font-size: 24px; }
+  .work-tile { transform: none !important; }
+  .work-tile:hover { transform: none !important; }
+
+  /* INSTAGRAM phone */
+  .ig-grid { grid-template-columns: 1fr; gap: 32px; }
+  .phone { width: 240px; height: 500px; transform: none; animation: none; }
+  .phone:hover { transform: translateY(-4px); }
+  .ig-floating-card { display: none; }
+  .ig-stat-num { font-size: 32px; }
+
+  /* CONTACT form */
+  .contact-form { padding: 20px; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .contact-form input, .contact-form textarea { font-size: 16px; } /* prevent iOS zoom */
+  .contact-form label { font-size: 13px; }
+  .contact-form button[type="submit"] {
+    width: 100%;
+    padding: 18px;
+    font-size: 15px;
+    min-height: 56px;
+  }
+  .contact-info { padding: 24px; border-radius: 16px; }
+  .info-value { font-size: 18px; }
+
+  /* FOOTER */
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+  footer { padding: 60px 20px 100px; }
+
+  /* FLOATING CTA: big and tappable */
+  .floating-cta {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 16px;
+    min-height: 56px;
+    box-shadow: 0 14px 36px rgba(255,106,26,0.55), 0 0 0 0 rgba(255,106,26,0.5);
+  }
+
+  /* Disable expensive 3D tilts on phone */
+  .work-tile,
+  .phone,
+  .logo-disc {
+    transform: none !important;
+  }
+
+  /* Mobile menu refinements */
+  .mobile-menu-panel { width: min(360px, 90vw); }
+  .mm-link {
+    padding: 16px 22px;
+    font-size: 22px;
+    min-height: 60px;
+  }
+  .mm-cta { min-height: 54px; }
+
+  /* INTRO grid */
+  .intro-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+  }
+  .intro-visual {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+  .float-badge { display: none; }
+
+  /* Divider stripes stay slim */
+  .divider-stripe { height: 4px; }
+
+  /* Sparks: fewer on mobile so they don't crowd */
+  .hero-sparks .spark:nth-child(n+7) { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 84px 16px 28px; }
+  .hero-title-new { font-size: clamp(36px, 12vw, 52px); }
+  .hero-eyebrow { font-size: 9px; }
+  .hero-gorilla { width: 100px; height: 100px; top: 80px; right: 12px; }
+  .hero-counter { padding: 12px 4px; }
+  .hc-num { font-size: 26px; }
+  .hc-num span { font-size: 12px; }
+  .hc-label { font-size: 8px; }
+
+  section { padding: 56px 16px !important; }
+  .section-title { font-size: clamp(30px, 10vw, 42px); }
+
+  .marquee { font-size: 12px; padding: 10px 0; }
+
+  .service-card h3 { font-size: 22px; }
+
+  .mm-link { font-size: 20px; padding: 14px 20px; }
+
+  .floating-cta {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    min-height: 52px;
+  }
+
+  body { padding-bottom: 78px; }
+
+  .map-cities-list { padding: 0; }
+  .mcl-list li { padding: 10px 0; font-size: 13px; }
+
+  /* Murrieta map labels: bump for legibility */
+  .socal-map text { font-size: 11px !important; }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .hero-title-new { font-size: 36px; }
+  .hero-gorilla { display: none; }
+  .marquee { font-size: 11px; }
+}
+
+/* Landscape phone */
+@media (max-width: 920px) and (orientation: landscape) and (max-height: 500px) {
+  .hero { min-height: 100svh; padding-top: 80px; }
+  .hero-counter { display: none; }
+  .hero-gorilla { display: none; }
+  .hero-title-new { font-size: 42px; }
+}
+
 </style>
 
 <script>
@@ -2774,7 +3069,7 @@ footer {
         <div class="section-tag">Service Area</div>
         <h2 class="section-title">We cover <em>Southern California</em>.</h2>
       </div>
-      <p class="section-lead">Based in Hemet, on the road across Riverside, San Bernardino, Orange, San Diego, and LA counties. If you can drive to it, we can pour it.</p>
+      <p class="section-lead">Most jobs run through the Murrieta, Temecula, and Menifee corridor. Based in Hemet, on the road across all of Southern California — if you can drive to it, we can pour it.</p>
     </div>
 
     <div class="map-wrap reveal">
@@ -2800,22 +3095,46 @@ footer {
           <path d="M 400 80 L 420 300 L 480 540" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
           <path d="M 600 150 L 580 350 L 600 510" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
 
-          <!-- HQ ring (Hemet) -->
-          <circle cx="500" cy="300" r="140" fill="url(#ringGrad)"/>
-          <circle cx="500" cy="300" r="80" fill="none" stroke="#FF6A1A" stroke-width="1" stroke-dasharray="4 6" opacity="0.5">
-            <animateTransform attributeName="transform" type="rotate" from="0 500 300" to="360 500 300" dur="40s" repeatCount="indefinite"/>
+          <!-- HOT ZONE: Murrieta (primary service area) -->
+          <circle cx="430" cy="380" r="160" fill="url(#ringGrad)"/>
+          <circle cx="430" cy="380" r="100" fill="none" stroke="#FF6A1A" stroke-width="1" stroke-dasharray="4 6" opacity="0.5">
+            <animateTransform attributeName="transform" type="rotate" from="0 430 380" to="360 430 380" dur="40s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="430" cy="380" r="60" fill="none" stroke="#FFD019" stroke-width="1" stroke-dasharray="2 4" opacity="0.4">
+            <animateTransform attributeName="transform" type="rotate" from="360 430 380" to="0 430 380" dur="60s" repeatCount="indefinite"/>
           </circle>
 
-          <!-- Cities -->
-          <g class="map-city map-city-hq" data-city="hemet">
-            <circle cx="500" cy="300" r="14" fill="#FF6A1A"/>
-            <circle cx="500" cy="300" r="14" fill="none" stroke="#FF6A1A" opacity="0.5">
-              <animate attributeName="r" values="14;28;14" dur="2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+          <!-- Murrieta primary marker -->
+          <g class="map-city map-city-hq" data-city="murrieta">
+            <circle cx="430" cy="380" r="16" fill="#FF6A1A"/>
+            <circle cx="430" cy="380" r="16" fill="none" stroke="#FF6A1A" opacity="0.6">
+              <animate attributeName="r" values="16;34;16" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" repeatCount="indefinite"/>
             </circle>
-            <text x="500" y="278" text-anchor="middle" fill="#fff" font-family="Anton, sans-serif" font-size="16" letter-spacing="2">HEMET · HQ</text>
+            <text x="430" y="358" text-anchor="middle" fill="#fff" font-family="Anton, sans-serif" font-size="18" letter-spacing="2">MURRIETA</text>
+            <text x="430" y="345" text-anchor="middle" fill="#FF6A1A" font-family="Inter, sans-serif" font-size="9" font-weight="700" letter-spacing="3">★ PRIMARY AREA ★</text>
           </g>
 
+          <!-- Hemet (HQ, but downplayed visually) -->
+          <g class="map-city" data-city="hemet">
+            <circle cx="510" cy="295" r="9" fill="#FFA418"/>
+            <text x="510" y="280" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="700">Hemet</text>
+            <text x="510" y="269" text-anchor="middle" fill="#FFA418" font-family="Inter, sans-serif" font-size="8" font-weight="600" letter-spacing="1.5">HQ</text>
+          </g>
+
+          <!-- Temecula (right next to Murrieta) -->
+          <g class="map-city" data-city="temecula">
+            <circle cx="395" cy="415" r="8" fill="#FFD019"/>
+            <text x="395" y="440" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="600">Temecula</text>
+          </g>
+
+          <!-- Menifee (north of Murrieta) -->
+          <g class="map-city" data-city="menifee">
+            <circle cx="465" cy="340" r="7" fill="#FFD019"/>
+            <text x="465" y="325" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="11" font-weight="600">Menifee</text>
+          </g>
+
+          <!-- Other surrounding cities -->
           <g class="map-city" data-city="la">
             <circle cx="200" cy="220" r="8" fill="#FFD019"/>
             <text x="200" y="205" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="600">Los Angeles</text>
@@ -2829,8 +3148,8 @@ footer {
             <text x="440" y="145" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="600">San Bernardino</text>
           </g>
           <g class="map-city" data-city="oc">
-            <circle cx="290" cy="370" r="8" fill="#FFD019"/>
-            <text x="290" y="395" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="600">Orange County</text>
+            <circle cx="270" cy="350" r="8" fill="#FFD019"/>
+            <text x="270" y="375" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="600">Orange County</text>
           </g>
           <g class="map-city" data-city="sd">
             <circle cx="420" cy="490" r="8" fill="#FFD019"/>
@@ -2841,14 +3160,17 @@ footer {
             <text x="640" y="275" text-anchor="middle" fill="#FAFAF7" font-family="Inter, sans-serif" font-size="12" font-weight="600">Palm Springs</text>
           </g>
 
-          <!-- Connection lines from HQ -->
+          <!-- Connection lines from MURRIETA -->
           <g stroke="#FF6A1A" stroke-width="1" fill="none" opacity="0.3" stroke-dasharray="3 4">
-            <line x1="500" y1="300" x2="200" y2="220"/>
-            <line x1="500" y1="300" x2="400" y2="240"/>
-            <line x1="500" y1="300" x2="440" y2="160"/>
-            <line x1="500" y1="300" x2="290" y2="370"/>
-            <line x1="500" y1="300" x2="420" y2="490"/>
-            <line x1="500" y1="300" x2="640" y2="290"/>
+            <line x1="430" y1="380" x2="200" y2="220"/>
+            <line x1="430" y1="380" x2="400" y2="240"/>
+            <line x1="430" y1="380" x2="440" y2="160"/>
+            <line x1="430" y1="380" x2="270" y2="350"/>
+            <line x1="430" y1="380" x2="420" y2="490"/>
+            <line x1="430" y1="380" x2="640" y2="290"/>
+            <line x1="430" y1="380" x2="510" y2="295"/>
+            <line x1="430" y1="380" x2="395" y2="415"/>
+            <line x1="430" y1="380" x2="465" y2="340"/>
           </g>
         </svg>
       </div>
@@ -2856,15 +3178,16 @@ footer {
       <div class="map-cities-list">
         <h3 class="mcl-title">Cities we serve</h3>
         <ul class="mcl-list">
-          <li><span class="mcl-dot mcl-hq"></span> Hemet <span class="mcl-tag">HQ</span></li>
-          <li><span class="mcl-dot"></span> Los Angeles County</li>
+          <li><span class="mcl-dot mcl-hq"></span> Murrieta <span class="mcl-tag">★ Primary</span></li>
+          <li><span class="mcl-dot"></span> Temecula</li>
+          <li><span class="mcl-dot"></span> Menifee · Wildomar · Lake Elsinore</li>
+          <li><span class="mcl-dot"></span> Hemet (HQ)</li>
           <li><span class="mcl-dot"></span> Riverside County</li>
           <li><span class="mcl-dot"></span> San Bernardino County</li>
           <li><span class="mcl-dot"></span> Orange County</li>
           <li><span class="mcl-dot"></span> San Diego County</li>
+          <li><span class="mcl-dot"></span> Los Angeles County</li>
           <li><span class="mcl-dot"></span> Palm Springs &amp; Coachella Valley</li>
-          <li><span class="mcl-dot"></span> Temecula · Murrieta · Menifee</li>
-          <li><span class="mcl-dot"></span> Corona · Moreno Valley · Banning</li>
         </ul>
         <a href="tel:9516348398" class="mcl-cta">
           <span>Not sure? Call us</span>
