@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Primary SEO -->
-<title>Cali Kongcrete | Custom Concrete Contractor in Hemet, CA — Driveways, Patios, Stamped Concrete</title>
-<meta name="description" content="Cali Kongcrete is a licensed concrete contractor in Hemet, CA serving all of Southern California. Driveways, patios, stamped & stained concrete, pool decks, retaining walls. Lic# 1131136 (C-8 C-61/D-12). Free estimates: 951-634-8398." />
-<meta name="keywords" content="concrete contractor Hemet, concrete contractor Southern California, custom concrete, stamped concrete, driveways Hemet CA, patios Hemet, pool deck contractor, decorative concrete, stained concrete, retaining walls, Cali Kongcrete, licensed concrete contractor, C-8 license, C-61 D-12 license, Riverside County concrete, Inland Empire concrete contractor" />
+<title>Cali Kongcrete | Custom Concrete Contractor in Hemet, CA — Driveways, Patios, Stamped Concrete, Artificial Turf</title>
+<meta name="description" content="Cali Kongcrete is a licensed concrete contractor in Hemet, CA serving all of Southern California. Driveways, patios, stamped & stained concrete, pool decks, walkways, artificial turf. Lic# 1131136 (C-8 C-61/D-12). Free estimates: 951-634-8398." />
+<meta name="keywords" content="concrete contractor Hemet, concrete contractor Southern California, custom concrete, artificial turf installation, synthetic turf Murrieta, pet-friendly turf, drought-friendly landscaping, stamped concrete, driveways Hemet CA, patios Hemet, pool deck contractor, decorative concrete, stained concrete, retaining walls, Cali Kongcrete, licensed concrete contractor, C-8 license, C-61 D-12 license, Riverside County concrete, Inland Empire concrete contractor" />
 <meta name="author" content="Cali Kongcrete" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://calikongcrete.com/" />
@@ -50,7 +50,7 @@
   "url": "https://calikongcrete.com/",
   "telephone": "+19516348398",
   "priceRange": "$$",
-  "description": "Licensed custom concrete contractor specializing in driveways, patios, stamped concrete, stained concrete, pool decks, walkways, and retaining walls across Southern California.",
+  "description": "Licensed custom concrete contractor specializing in driveways, patios, stamped concrete, stained concrete, pool decks, walkways, and artificial turf installation across Southern California.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Hemet",
@@ -91,7 +91,7 @@
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Stamped Concrete"}},
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Stained & Polished Concrete"}},
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Walkways & Steps"}},
-    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Retaining Walls"}}
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Artificial Turf Installation"}}
   ]
 }
 </script>
@@ -882,6 +882,31 @@ section { position: relative; padding: 140px 48px; }
     radial-gradient(circle at 30% 30%, rgba(255,106,26,.22), transparent 60%),
     radial-gradient(circle at 75% 75%, rgba(255,106,26,.12), transparent 60%),
     linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+.turf-placeholder {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.turf-placeholder svg:first-child {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+.turf-placeholder::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(255,255,255,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+}
+.turf-icon {
+  position: absolute;
+  bottom: 22px; right: 22px;
+  z-index: 2;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+  animation: gentlePulse 4s ease-in-out infinite;
 }
 .service-placeholder img, .work-placeholder img {
   width: 38%;
@@ -2868,7 +2893,7 @@ footer {
     </h1>
     <div class="hero-bottom">
       <p class="hero-sub">
-        Driveways, patios, stamped and decorative concrete — finished by hand
+        Driveways, patios, stamped concrete and artificial turf — finished by hand
         with the kind of attention most contractors stopped giving years ago.
       </p>
       <div class="hero-actions">
@@ -2912,8 +2937,8 @@ footer {
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>Driveways</span><span>Patios</span><span>Stamped Concrete</span><span>Stained Finishes</span><span>Pool Decks</span><span>Walkways</span><span>Retaining Walls</span><span>Custom Work</span>
-    <span>Driveways</span><span>Patios</span><span>Stamped Concrete</span><span>Stained Finishes</span><span>Pool Decks</span><span>Walkways</span><span>Retaining Walls</span><span>Custom Work</span>
+    <span>Driveways</span><span>Patios</span><span>Stamped Concrete</span><span>Stained Finishes</span><span>Pool Decks</span><span>Walkways</span><span>Artificial Turf</span><span>Custom Work</span>
+    <span>Driveways</span><span>Patios</span><span>Stamped Concrete</span><span>Stained Finishes</span><span>Pool Decks</span><span>Walkways</span><span>Artificial Turf</span><span>Custom Work</span>
   </div>
 </div>
 
@@ -3051,6 +3076,48 @@ footer {
           <p>Pathways, entry steps, and side yards finished to match the rest of your property's character.</p>
           <div class="s-meta">
             <div class="s-tags"><span class="s-tag">Custom</span><span class="s-tag">ADA</span></div>
+            <div class="s-arrow">→</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-media">
+          <div class="turf-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="turfBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a3d1f"/>
+                  <stop offset="100%" stop-color="#0c1f0e"/>
+                </linearGradient>
+                <pattern id="turfBlades" x="0" y="0" width="14" height="18" patternUnits="userSpaceOnUse">
+                  <path d="M 3 18 L 5 4 L 7 18 Z" fill="#3d8a3f" opacity="0.7"/>
+                  <path d="M 9 18 L 11 6 L 13 18 Z" fill="#4faa52" opacity="0.55"/>
+                  <path d="M 6 18 L 8 10 L 10 18 Z" fill="#5ec062" opacity="0.4"/>
+                </pattern>
+              </defs>
+              <rect width="240" height="140" fill="url(#turfBg)"/>
+              <rect width="240" height="140" fill="url(#turfBlades)"/>
+            </svg>
+            <div class="turf-icon">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" stroke="#FAFAF7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 56 L8 40 M8 40 C 8 32, 12 28, 16 28 C 12 22, 14 16, 18 14 C 16 8, 20 4, 24 8 C 24 4, 28 4, 30 8 C 32 4, 36 4, 36 8 C 40 4, 44 8, 42 14 C 46 16, 48 22, 44 28 C 48 28, 52 32, 52 40 L 52 56 Z"/>
+                <line x1="14" y1="56" x2="14" y2="36"/>
+                <line x1="22" y1="56" x2="22" y2="28"/>
+                <line x1="30" y1="56" x2="30" y2="22"/>
+                <line x1="38" y1="56" x2="38" y2="28"/>
+                <line x1="46" y1="56" x2="46" y2="36"/>
+              </svg>
+            </div>
+          </div>
+          <div class="service-media-overlay"></div>
+        </div>
+        <div class="service-content">
+          <div class="s-num"><span>06</span></div>
+          <h3>Artificial Turf</h3>
+          <p>Premium synthetic turf installed over a proper base. Pet-safe, drought-friendly, looks real all year — no mowing, no brown spots.</p>
+          <div class="s-meta">
+            <div class="s-tags"><span class="s-tag">Pet-Safe</span><span class="s-tag">Drought-Friendly</span></div>
             <div class="s-arrow">→</div>
           </div>
         </div>
@@ -3447,8 +3514,8 @@ footer {
 <!-- DARK ENERGY MARQUEE -->
 <div class="marquee alt reverse" aria-hidden="true">
   <div class="marquee-track">
-    <span><span class="accent">Driveways</span> <span class="dot"></span> <span class="accent">Patios</span> <span class="dot"></span> <span class="accent">Pool Decks</span> <span class="dot"></span> <span class="accent">Stamped</span> <span class="dot"></span> <span class="accent">Stained</span> <span class="dot"></span> <span class="accent">Walkways</span> <span class="dot"></span> <span class="accent">Retaining Walls</span> <span class="dot"></span> <span class="accent">Custom Work</span> <span class="dot"></span></span>
-    <span><span class="accent">Driveways</span> <span class="dot"></span> <span class="accent">Patios</span> <span class="dot"></span> <span class="accent">Pool Decks</span> <span class="dot"></span> <span class="accent">Stamped</span> <span class="dot"></span> <span class="accent">Stained</span> <span class="dot"></span> <span class="accent">Walkways</span> <span class="dot"></span> <span class="accent">Retaining Walls</span> <span class="dot"></span> <span class="accent">Custom Work</span> <span class="dot"></span></span>
+    <span><span class="accent">Driveways</span> <span class="dot"></span> <span class="accent">Patios</span> <span class="dot"></span> <span class="accent">Pool Decks</span> <span class="dot"></span> <span class="accent">Stamped</span> <span class="dot"></span> <span class="accent">Stained</span> <span class="dot"></span> <span class="accent">Walkways</span> <span class="dot"></span> <span class="accent">Artificial Turf</span> <span class="dot"></span> <span class="accent">Custom Work</span> <span class="dot"></span></span>
+    <span><span class="accent">Driveways</span> <span class="dot"></span> <span class="accent">Patios</span> <span class="dot"></span> <span class="accent">Pool Decks</span> <span class="dot"></span> <span class="accent">Stamped</span> <span class="dot"></span> <span class="accent">Stained</span> <span class="dot"></span> <span class="accent">Walkways</span> <span class="dot"></span> <span class="accent">Artificial Turf</span> <span class="dot"></span> <span class="accent">Custom Work</span> <span class="dot"></span></span>
   </div>
 </div>
 
