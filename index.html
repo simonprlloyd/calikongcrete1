@@ -1412,6 +1412,311 @@ footer {
     transition-duration: .01ms !important;
   }
 }
+
+
+/* === ENERGY PASS: graffiti motion, sunset everywhere === */
+
+/* MARQUEE TICKER */
+.marquee {
+  position: relative;
+  background: var(--grad-sunset);
+  color: var(--ink);
+  padding: 18px 0;
+  overflow: hidden;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  font-family: 'Anton', sans-serif;
+  letter-spacing: .08em;
+  font-size: 22px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 0 60px rgba(255,106,26,.35);
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track span { display: inline-flex; align-items: center; gap: 36px; }
+.marquee-track .dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: var(--ink);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.marquee.reverse .marquee-track { animation-direction: reverse; }
+.marquee.alt {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--orange);
+}
+.marquee.alt .marquee-track .dot { background: var(--orange); }
+.marquee.alt .marquee-track .accent { color: var(--orange); }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Hero spark particles */
+.hero-sparks {
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.spark {
+  position: absolute;
+  bottom: -10px;
+  width: 6px; height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 12px var(--orange));
+  opacity: 0;
+  animation: floatUp 7s linear infinite;
+}
+.spark:nth-child(odd) { background: var(--yellow); filter: drop-shadow(0 0 10px var(--yellow)); }
+.spark:nth-child(3n) { width: 4px; height: 4px; }
+.spark:nth-child(5n) { width: 8px; height: 8px; }
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(40px) scale(.3); opacity: 0; }
+}
+
+/* Animated gradient text */
+.hero-title em, .section-title em {
+  background-size: 200% 200%;
+  animation: gradShift 6s ease-in-out infinite;
+}
+@keyframes gradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Punch up service cards */
+.service-card {
+  position: relative;
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: var(--grad-sunset);
+  transition: width .35s var(--ease);
+  z-index: 4;
+}
+.service-card:hover::before { width: 5px; }
+.service-card:hover {
+  box-shadow:
+    0 30px 60px rgba(0,0,0,.5),
+    0 0 80px rgba(255,106,26,.25),
+    inset 0 0 0 1px var(--orange);
+  transform: translateY(-6px);
+}
+
+/* Work tile hover energy */
+.work-tile {
+  cursor: pointer;
+  will-change: transform;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.work-tile:hover {
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.7),
+    0 0 100px rgba(255,106,26,.3);
+}
+.work-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-sunset);
+  opacity: 0;
+  mix-blend-mode: overlay;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.work-tile:hover::after { opacity: .3; }
+
+/* Pulsing "Project Footage" badge */
+.work-live {
+  position: relative;
+}
+.work-live::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 0 rgba(255,106,26,.7);
+  animation: livePulse 1.8s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,106,26,.8); }
+  70%  { box-shadow: 0 0 0 12px rgba(255,106,26,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,106,26,0); }
+}
+
+/* Floating CTA: bigger, glowier, wigglier */
+.floating-cta {
+  animation: ctaPulse 2.4s ease-in-out infinite;
+  box-shadow:
+    0 12px 32px rgba(255,106,26,.45),
+    0 0 0 0 rgba(255,106,26,.5);
+}
+@keyframes ctaPulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 12px 32px rgba(255,106,26,.45), 0 0 0 0 rgba(255,106,26,.5);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(255,106,26,.6), 0 0 0 18px rgba(255,106,26,0);
+  }
+}
+
+/* Primary button: shimmer sweep on hover */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);
+  transition: left .6s ease;
+}
+.btn-primary:hover::before { left: 100%; }
+
+/* Big number stat: gradient text on the digit */
+.stat-num em, .ig-stat-num em {
+  background: var(--grad-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradShift 5s ease-in-out infinite;
+}
+
+/* Service number gets a sunset glow */
+.s-num {
+  position: relative;
+}
+.s-num span {
+  background: var(--grad-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Logo disc: stronger glow on hover */
+.logo-disc:hover {
+  box-shadow:
+    0 0 60px rgba(255,106,26,.5),
+    0 0 120px rgba(255,208,25,.3);
+}
+
+/* Section divider stripes */
+.divider-stripe {
+  height: 6px;
+  background:
+    linear-gradient(90deg,
+      var(--red) 0%,
+      var(--orange) 33%,
+      var(--amber) 66%,
+      var(--yellow) 100%);
+  background-size: 200% 100%;
+  animation: stripeShift 4s linear infinite;
+}
+@keyframes stripeShift {
+  from { background-position: 0% 0; }
+  to   { background-position: 200% 0; }
+}
+
+/* Service placeholder upgrade — pulsing logo */
+.service-placeholder img,
+.work-placeholder img {
+  animation: gentlePulse 4s ease-in-out infinite;
+}
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); opacity: .85; }
+  50%      { transform: scale(1.06); opacity: 1; }
+}
+
+/* Honest media badge — overlays the corner of generic videos */
+.media-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  z-index: 5;
+  background: rgba(10,10,10,.75);
+  backdrop-filter: blur(8px);
+  color: var(--bone);
+  font-family: 'Anton', sans-serif;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,106,26,.5);
+  display: flex; align-items: center; gap: 6px;
+}
+.media-badge::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--orange);
+  animation: livePulse 1.8s ease-in-out infinite;
+}
+
+/* Tilt effect for work tiles - applied via JS */
+.work-tile {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+/* Stats container: subtle ambient orange glow behind */
+.stats {
+  position: relative;
+}
+.stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255,106,26,.15), transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(255,208,25,.1), transparent 50%);
+  pointer-events: none;
+  animation: ambientShift 12s ease-in-out infinite alternate;
+}
+@keyframes ambientShift {
+  from { transform: translateX(-30px); }
+  to   { transform: translateX(30px); }
+}
+
+/* Process steps: numbered pop */
+.step-num em {
+  background: var(--grad-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform .3s ease;
+}
+.step:hover .step-num em {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+/* === END ENERGY PASS === */
+
 </style>
 
 <script>
@@ -1458,6 +1763,21 @@ footer {
     <source src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878326/SnapInsta.to_AQN97ju_gC8KFkVts1pUbmpBKork3K13-6B6rTqI3HuJNo2hc8RrieJYdDBwF_CpqMmEnPJkyfawD3DaaIGHcLLfT097OUgXzQoiUbA_ns7t2q.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
+  <div class="hero-sparks" aria-hidden="true">
+    <span class="spark" style="left:5%; animation-delay:0s;"></span>
+    <span class="spark" style="left:12%; animation-delay:1.4s;"></span>
+    <span class="spark" style="left:20%; animation-delay:3.2s;"></span>
+    <span class="spark" style="left:28%; animation-delay:0.6s;"></span>
+    <span class="spark" style="left:36%; animation-delay:2.1s;"></span>
+    <span class="spark" style="left:44%; animation-delay:4.0s;"></span>
+    <span class="spark" style="left:52%; animation-delay:1.0s;"></span>
+    <span class="spark" style="left:60%; animation-delay:2.7s;"></span>
+    <span class="spark" style="left:68%; animation-delay:0.3s;"></span>
+    <span class="spark" style="left:76%; animation-delay:3.6s;"></span>
+    <span class="spark" style="left:84%; animation-delay:1.7s;"></span>
+    <span class="spark" style="left:92%; animation-delay:4.5s;"></span>
+  </div>
+
 
   <div class="hero-inner">
     <div class="hero-eyebrow">
@@ -1530,6 +1850,8 @@ footer {
 </section>
 
 <!-- STATS -->
+
+<div class="divider-stripe" aria-hidden="true"></div>
 <section class="stats" aria-label="Company highlights">
   <div class="stats-grid">
     <div class="stat-item reveal">
@@ -1556,6 +1878,15 @@ footer {
 </section>
 
 <!-- SERVICES with inline video previews -->
+
+<!-- BIG ENERGY MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>★ Built to Last <span class="dot"></span> Licensed C-8 C-61/D-12 <span class="dot"></span> Lic #1131136 <span class="dot"></span> Free Estimates <span class="dot"></span> Hemet, CA <span class="dot"></span> Serving All SoCal <span class="dot"></span> 951-634-8398 <span class="dot"></span></span>
+    <span>★ Built to Last <span class="dot"></span> Licensed C-8 C-61/D-12 <span class="dot"></span> Lic #1131136 <span class="dot"></span> Free Estimates <span class="dot"></span> Hemet, CA <span class="dot"></span> Serving All SoCal <span class="dot"></span> 951-634-8398 <span class="dot"></span></span>
+  </div>
+</div>
+
 <section class="services" id="services" aria-label="Concrete services">
   <div class="container">
     <div class="section-head reveal">
@@ -1563,11 +1894,12 @@ footer {
         <div class="section-tag">Services</div>
         <h2 class="section-title">What we <em>build</em>.</h2>
       </div>
-      <p class="section-lead">Residential and commercial concrete — from clean utilitarian pours to fully custom decorative finishes, handled end-to-end. Watch real work in motion.</p>
+      <p class="section-lead">Residential and commercial concrete — from clean utilitarian pours to fully custom decorative finishes, handled end-to-end. Built strong. Finished sharp.</p>
     </div>
     <div class="services-grid">
       <article class="service-card reveal">
         <div class="service-media">
+          <span class="media-badge">Project Footage</span>
           <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878617/SnapInsta.to_AQOCTjteYGOy4Fgj2Qphe8c8ZZrqGn2X7_hEQw_SxanCeiegv3_SKKmqnOTyhSrlytU1XtGn2KHVqfLipmbHBrX9KpGB6eVqSE4PXOE_zza736.mp4"></video>
           <div class="service-media-overlay"></div>
         </div>
@@ -1584,6 +1916,7 @@ footer {
 
       <article class="service-card reveal">
         <div class="service-media">
+          <span class="media-badge">Project Footage</span>
           <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878483/SnapInsta.to_AQNYpFVqyU2d5UAw4B1EB4LtwyoguuGMzNotc5xSPYU134WcbkylTwWxFKbWepHpJy4IghW-cSZ_hwDynnJMdbZd18wsHUKhN6Jv2xk_urecxg.mp4"></video>
           <div class="service-media-overlay"></div>
         </div>
@@ -1600,6 +1933,7 @@ footer {
 
       <article class="service-card reveal">
         <div class="service-media">
+          <span class="media-badge">Project Footage</span>
           <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878427/SnapInsta.to_AQPfUZMQ5HJ7R2xro5C8mlQZZ0rHsOS3Zbtvf3ixFcJH_g0nJzmFCKo5N1thD6x6QhhEikhLAHcqIrKbh3eSwqX7BVS3KkF-hi-SKa8_lsboil.mp4"></video>
           <div class="service-media-overlay"></div>
         </div>
@@ -1616,6 +1950,7 @@ footer {
 
       <article class="service-card reveal">
         <div class="service-media">
+          <span class="media-badge">Project Footage</span>
           <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878384/SnapInsta.to_AQPOd6xDhquJJZefOPVDvPlFryk4pYPiNryoPGPks6coOGCRnIgLOx2CsC5hvPimZi-ZgtLQEsdUMALIJWDAmWPB_mgufhl.mp4"></video>
           <div class="service-media-overlay"></div>
         </div>
@@ -1632,6 +1967,7 @@ footer {
 
       <article class="service-card reveal">
         <div class="service-media">
+          <span class="media-badge">Project Footage</span>
           <img class="service-image" src="https://res.cloudinary.com/dycutbccb/image/upload/v1778882427/SnapInsta.to_632803828_18082266014334751_6749522911347697981_n_gwbs4a.jpg" alt="Cali Kongcrete walkway and steps project">
           <div class="service-media-overlay"></div>
         </div>
@@ -1648,6 +1984,7 @@ footer {
 
       <article class="service-card reveal">
         <div class="service-media">
+          <span class="media-badge">Project Footage</span>
           <div class="service-placeholder" aria-hidden="true">
             <img src="cali-kongcrete-logo.png" alt="">
           </div>
@@ -1703,6 +2040,8 @@ footer {
 </section>
 
 <!-- WORK / VIDEO GALLERY — BIGGER -->
+
+<div class="divider-stripe" aria-hidden="true"></div>
 <section class="work" id="work" aria-label="Recent work">
   <div class="container">
     <div class="section-head reveal">
@@ -1715,50 +2054,53 @@ footer {
 
     <div class="work-grid">
       <article class="work-tile featured reveal">
+        <span class="media-badge">Project Footage</span>
         <img class="work-image" src="https://res.cloudinary.com/dycutbccb/image/upload/v1778882534/SnapInsta.to_583039738_18073617011334751_3973893129851148261_n_kyju3n.jpg" alt="Featured Cali Kongcrete project">
         <div class="work-tile-overlay"></div>
         <div class="work-tile-label">
           <div class="work-top">
-            <span class="work-cat">Featured</span>
-            <span class="work-live">Recent Build</span>
+            <span class="work-cat">From the Field</span>
+            <span class="work-live">Project Footage</span>
           </div>
           <div>
-            <h3 class="work-title">Custom Build</h3>
-            <div class="work-meta">Concrete Craftsmanship · Hemet, CA</div>
+            <h3 class="work-title">Concrete Work</h3>
+            <div class="work-meta">Southern California</div>
           </div>
         </div>
       </article>
 
       <article class="work-tile tall reveal">
+        <span class="media-badge">Project Footage</span>
         <div class="work-placeholder" aria-hidden="true">
           <img src="cali-kongcrete-logo.png" alt="">
         </div>
         <div class="work-tile-overlay"></div>
         <div class="work-tile-label">
           <div class="work-top">
-            <span class="work-cat">In Progress</span>
-            <span class="work-live">Recent Build</span>
+            <span class="work-cat">From the Field</span>
+            <span class="work-live">Project Footage</span>
           </div>
           <div>
-            <h3 class="work-title">On Site</h3>
-            <div class="work-meta">Form &amp; Finish</div>
+            <h3 class="work-title">Project Footage</h3>
+            <div class="work-meta">Form · Pour · Finish</div>
           </div>
         </div>
       </article>
 
       <article class="work-tile short reveal">
+        <span class="media-badge">Project Footage</span>
         <div class="work-placeholder" aria-hidden="true">
           <img src="cali-kongcrete-logo.png" alt="">
         </div>
         <div class="work-tile-overlay"></div>
         <div class="work-tile-label">
           <div class="work-top">
-            <span class="work-cat">Project</span>
-            <span class="work-live">Recent Build</span>
+            <span class="work-cat">From the Field</span>
+            <span class="work-live">Project Footage</span>
           </div>
           <div>
-            <h3 class="work-title">Behind the Build</h3>
-            <div class="work-meta">Process · Pour · Finish</div>
+            <h3 class="work-title">On the Job</h3>
+            <div class="work-meta">Crew at Work</div>
           </div>
         </div>
       </article>
@@ -1767,6 +2109,8 @@ footer {
 </section>
 
 <!-- INSTAGRAM PHONE SECTION -->
+
+<div class="divider-stripe" aria-hidden="true"></div>
 <section class="instagram-section" id="instagram" aria-label="Cali Kongcrete on Instagram">
   <div class="container">
     <div class="ig-grid">
@@ -1940,6 +2284,15 @@ footer {
 </section>
 
 <!-- CONTACT -->
+
+<!-- DARK ENERGY MARQUEE -->
+<div class="marquee alt reverse" aria-hidden="true">
+  <div class="marquee-track">
+    <span><span class="accent">Driveways</span> <span class="dot"></span> <span class="accent">Patios</span> <span class="dot"></span> <span class="accent">Pool Decks</span> <span class="dot"></span> <span class="accent">Stamped</span> <span class="dot"></span> <span class="accent">Stained</span> <span class="dot"></span> <span class="accent">Walkways</span> <span class="dot"></span> <span class="accent">Retaining Walls</span> <span class="dot"></span> <span class="accent">Custom Work</span> <span class="dot"></span></span>
+    <span><span class="accent">Driveways</span> <span class="dot"></span> <span class="accent">Patios</span> <span class="dot"></span> <span class="accent">Pool Decks</span> <span class="dot"></span> <span class="accent">Stamped</span> <span class="dot"></span> <span class="accent">Stained</span> <span class="dot"></span> <span class="accent">Walkways</span> <span class="dot"></span> <span class="accent">Retaining Walls</span> <span class="dot"></span> <span class="accent">Custom Work</span> <span class="dot"></span></span>
+  </div>
+</div>
+
 <section class="contact" id="contact" aria-label="Contact us">
   <div class="container">
     <div class="section-head reveal">
@@ -2147,6 +2500,19 @@ const statIO = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 statNums.forEach(s => statIO.observe(s));
+
+// Work tile tilt-on-hover for energy
+document.querySelectorAll('.work-tile').forEach(tile => {
+  tile.addEventListener('mousemove', (e) => {
+    const rect = tile.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    tile.style.transform = `perspective(1200px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-6px)`;
+  });
+  tile.addEventListener('mouseleave', () => {
+    tile.style.transform = '';
+  });
+});
 </script>
 
 </body>
