@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cali Kongcrete — Custom Concrete. Built To Last.</title>
+<meta name="description" content="Cali Kongcrete — custom concrete craftsmanship across Southern California. Driveways, patios, stamped & decorative concrete. Licensed & insured. Lic# 1131136." />
+<link rel="icon" type="image/png" href="cali-kongcrete-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red:       #E63A1F;
+  --orange:    #FF6A1A;
+  --amber:     #FFA418;
+  --yellow:    #FFD019;
+  --ink:       #0A0A0A;
+  --ink-2:     #141414;
+  --ink-3:     #1E1E1E;
+  --bone:      #FAFAF7;
+  --paper:     #F4F2EC;
+  --line:      rgba(255,255,255,.08);
+  --line-dark: rgba(10,10,10,.1);
+  --grad-sunset: linear-gradient(135deg, #E63A1F 0%, #FF6A1A 50%, #FFD019 100%);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--ink); }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all .35s var(--ease);
+}
+nav.scrolled {
+  padding: 12px 40px;
+  background: rgba(10,10,10,.78);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 12px; color: var(--bone); }
+.brand img { width: 38px; height: 38px; object-fit: contain; transition: transform .4s var(--ease); }
+.brand:hover img { transform: rotate(-6deg) scale(1.08); }
+.brand-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 20px; letter-spacing: 1.5px;
+  text-transform: uppercase; line-height: 1;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--bone); position: relative; padding: 4px 0;
+  transition: color .25s; opacity: .85;
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: -3px;
+  width: 0; height: 1px; background: var(--orange);
+  transition: width .35s var(--ease);
+}
+.nav-links a:hover { color: var(--orange); opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 22px; background: var(--bone); color: var(--ink);
+  border-radius: 999px; font-size: 13px; font-weight: 600;
+  transition: all .3s var(--ease);
+}
+.nav-cta:hover { background: var(--orange); transform: translateY(-1px); }
+.menu-toggle {
+  display: none; width: 40px; height: 40px; position: relative;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(8px);
+  border-radius: 8px; border: 1px solid var(--line);
+}
+.menu-toggle span {
+  position: absolute; left: 10px; width: 20px; height: 1.5px;
+  background: var(--bone);
+}
+.menu-toggle span:nth-child(1) { top: 14px; }
+.menu-toggle span:nth-child(2) { top: 24px; }
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: flex-end;
+  padding: 100px 40px 60px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(10,10,10,.55) 0%,
+    rgba(10,10,10,.15) 30%,
+    rgba(10,10,10,.05) 55%,
+    rgba(10,10,10,.7) 95%,
+    rgba(10,10,10,.95) 100%);
+}
+.hero-inner { position: relative; z-index: 5; max-width: 1400px; width: 100%; margin: 0 auto; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0; animation: fadeUp 1s var(--ease-out) .2s forwards;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--orange); }
+.live-dot {
+  width: 6px; height: 6px; background: var(--orange); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite; margin-left: 6px;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: .4; transform: scale(1.5); }
+}
+.hero h1 {
+  font-family: 'Anton', sans-serif; font-weight: 400;
+  font-size: clamp(54px, 9vw, 144px);
+  line-height: .9; letter-spacing: -.02em;
+  text-transform: uppercase; color: var(--bone);
+  margin-bottom: 28px; max-width: 1100px;
+}
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span {
+  display: inline-block; transform: translateY(110%);
+  animation: slideUp 1s var(--ease-out) forwards;
+}
+.hero h1 .line:nth-child(1) > span { animation-delay: .3s; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .45s; }
+.hero h1 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic; font-weight: 400;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; letter-spacing: -.01em;
+}
+@keyframes slideUp { to { transform: translateY(0); } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-bottom {
+  display: flex; justify-content: space-between;
+  align-items: end; gap: 60px; flex-wrap: wrap;
+  margin-top: 8px;
+  opacity: 0; animation: fadeUp 1s var(--ease-out) .9s forwards;
+}
+.hero-sub {
+  font-size: 17px; color: rgba(250,250,247,.85);
+  max-width: 480px; line-height: 1.55;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 28px; border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  transition: all .3s var(--ease);
+  position: relative; overflow: hidden;
+  border: 1px solid transparent; white-space: nowrap;
+}
+.btn .arrow {
+  width: 14px; height: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: transform .3s var(--ease);
+}
+.btn:hover .arrow { transform: translateX(4px); }
+.btn-primary { background: var(--orange); color: var(--ink); }
+.btn-primary::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--yellow);
+  transform: translateY(101%);
+  transition: transform .4s var(--ease);
+}
+.btn-primary > * { position: relative; z-index: 1; }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-primary:hover::before { transform: translateY(0); }
+.btn-glass {
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
+  color: var(--bone);
+  border-color: rgba(255,255,255,.18);
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.3);
+}
+.btn-dark { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+.btn-dark:hover { background: var(--orange); color: var(--ink); border-color: var(--orange); }
+
+/* SCROLL CUE */
+.scroll-cue {
+  position: absolute; bottom: 24px; left: 50%;
+  transform: translateX(-50%); z-index: 6;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  opacity: 0; animation: fadeUp 1s var(--ease-out) 1.4s forwards;
+}
+.scroll-cue::after {
+  content: ""; width: 1px; height: 36px;
+  background: linear-gradient(180deg, rgba(255,255,255,.5), transparent);
+  animation: scrollLine 2.4s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* TICKER */
+.ticker {
+  background: var(--ink); overflow: hidden; padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.ticker-track {
+  display: flex; gap: 60px; white-space: nowrap;
+  animation: scroll 40s linear infinite; align-items: center;
+}
+.ticker-track span {
+  font-family: 'Anton', sans-serif;
+  font-size: 28px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--bone);
+  display: inline-flex; align-items: center; gap: 60px;
+}
+.ticker-track span:nth-child(odd) {
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  font-style: italic;
+  font-family: 'Instrument Serif', serif;
+  font-size: 32px; letter-spacing: -.01em; text-transform: none;
+}
+.ticker-track span::after {
+  content: ""; width: 6px; height: 6px;
+  background: var(--orange); border-radius: 50%; margin-left: 40px;
+}
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SECTION BASE */
+section { position: relative; padding: 140px 40px; }
+.container { max-width: 1400px; margin: 0 auto; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(250,250,247,.6); margin-bottom: 24px;
+}
+.section-tag::before { content: ""; width: 24px; height: 1px; background: var(--orange); }
+.section-title {
+  font-family: 'Anton', sans-serif; font-weight: 400;
+  font-size: clamp(42px, 6.5vw, 96px);
+  line-height: .95; letter-spacing: -.02em;
+  text-transform: uppercase; color: var(--bone);
+  margin-bottom: 24px;
+}
+.section-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; letter-spacing: -.01em;
+}
+.section-lead {
+  font-size: 17px; color: rgba(250,250,247,.7);
+  max-width: 580px; line-height: 1.6;
+}
+.section-head {
+  display: grid; grid-template-columns: 1.2fr 2fr;
+  gap: 60px; margin-bottom: 80px; align-items: end;
+}
+.section-head-left { padding-right: 40px; }
+
+/* INTRO */
+.intro { background: var(--ink); padding: 120px 40px; }
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.intro-text p {
+  font-size: 19px; line-height: 1.65;
+  color: rgba(250,250,247,.78); margin-bottom: 22px; max-width: 520px;
+}
+.intro-text p:first-of-type {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 30px; line-height: 1.3;
+  color: var(--bone); letter-spacing: -.01em;
+  margin-bottom: 28px;
+}
+.intro-text p strong { color: var(--bone); font-weight: 600; }
+.intro-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.intro-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border: 1px solid var(--line);
+  border-radius: 999px; font-size: 13px;
+  color: rgba(250,250,247,.8);
+  transition: all .3s var(--ease);
+}
+.intro-pill::before {
+  content: ""; width: 6px; height: 6px;
+  background: var(--orange); border-radius: 50%;
+}
+.intro-pill:hover { border-color: var(--orange); background: rgba(255,106,26,.05); }
+
+.intro-visual { position: relative; aspect-ratio: 1; max-width: 480px; margin: 0 auto; }
+.logo-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,164,24,.25), transparent 70%);
+  filter: blur(40px); animation: glow 6s ease-in-out infinite;
+}
+@keyframes glow {
+  0%,100% { opacity: .8; transform: scale(.95); }
+  50%     { opacity: 1; transform: scale(1.05); }
+}
+.logo-disc {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper); border-radius: 50%;
+  border: 1px solid var(--line); overflow: hidden;
+}
+.logo-disc::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,208,25,.15), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(230,58,31,.1), transparent 50%);
+}
+.logo-disc img { width: 78%; height: 78%; object-fit: contain; position: relative; z-index: 1; }
+.logo-orbit {
+  position: absolute; inset: -8%;
+  border: 1px dashed rgba(255,106,26,.3);
+  border-radius: 50%;
+  animation: spin 50s linear infinite;
+  pointer-events: none;
+}
+.logo-orbit::after {
+  content: ""; position: absolute; top: -4px; left: 50%;
+  width: 8px; height: 8px;
+  background: var(--orange); border-radius: 50%;
+  transform: translateX(-50%);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.logo-meta {
+  position: absolute; bottom: -8px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink); color: var(--bone);
+  padding: 10px 22px; border-radius: 999px;
+  font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+  border: 1px solid var(--orange); z-index: 3; white-space: nowrap;
+}
+
+/* STATS */
+.stats {
+  background: var(--ink-2); padding: 80px 40px;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: 1400px; margin: 0 auto;
+}
+.stat-item {
+  padding: 0 40px; border-left: 1px solid var(--line);
+  transition: all .3s var(--ease);
+}
+.stat-item:first-child { border-left: 0; padding-left: 0; }
+.stat-item:last-child  { padding-right: 0; }
+.stat-item:hover { transform: translateY(-4px); }
+.stat-num {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(48px, 6vw, 80px); line-height: 1;
+  letter-spacing: -.02em; color: var(--bone);
+  display: block; margin-bottom: 12px;
+}
+.stat-num em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.stat-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(250,250,247,.5); margin-bottom: 6px;
+}
+.stat-desc {
+  font-size: 13.5px; color: rgba(250,250,247,.65);
+  line-height: 1.5; max-width: 220px;
+}
+
+/* SERVICES */
+.services { background: var(--ink); padding: 140px 40px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  position: relative; background: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 16px;
+  padding: 32px 28px; overflow: hidden;
+  transition: all .4s var(--ease); cursor: pointer;
+}
+.service-card::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  transform: scaleX(0); transition: transform .5s var(--ease);
+}
+.service-card:hover {
+  background: var(--ink-3);
+  border-color: rgba(255,106,26,.3);
+  transform: translateY(-4px);
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover .s-arrow {
+  background: var(--orange); color: var(--ink); transform: rotate(-45deg);
+}
+.s-num {
+  font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.s-num::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.service-card h3 {
+  font-family: 'Anton', sans-serif; font-size: 30px;
+  letter-spacing: -.01em; text-transform: uppercase;
+  line-height: .95; margin-bottom: 14px; color: var(--bone);
+}
+.service-card p {
+  font-size: 14.5px; color: rgba(250,250,247,.65);
+  line-height: 1.55; margin-bottom: 24px;
+}
+.s-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 20px; border-top: 1px solid var(--line);
+}
+.s-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.s-tag { font-size: 11px; color: rgba(250,250,247,.55); font-weight: 500; }
+.s-tag + .s-tag::before { content: "·"; margin-right: 6px; color: var(--orange); }
+.s-arrow {
+  flex-shrink: 0; width: 36px; height: 36px;
+  border: 1px solid var(--line); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: rgba(250,250,247,.7);
+  transition: all .35s var(--ease);
+}
+
+/* PROCESS */
+.process { background: var(--paper); color: var(--ink); padding: 140px 40px; }
+.process .section-title { color: var(--ink); }
+.process .section-tag { color: rgba(10,10,10,.55); }
+.process .section-tag::before { background: var(--orange); }
+.process .section-lead { color: rgba(10,10,10,.7); }
+.process-flow {
+  position: relative; display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-dark);
+}
+.step {
+  padding: 36px 32px 36px 0;
+  border-right: 1px solid var(--line-dark);
+  transition: all .35s var(--ease);
+  position: relative;
+}
+.step:last-child { border-right: 0; }
+.step:not(:first-child) { padding-left: 32px; }
+.step:hover { background: rgba(255,106,26,.04); }
+.step:hover .step-num em { transform: scale(1.1); }
+.step-num {
+  font-family: 'Anton', sans-serif; font-size: 13px;
+  letter-spacing: .15em; color: rgba(10,10,10,.5);
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 32px;
+}
+.step-num em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 64px; line-height: 1;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  transition: transform .4s var(--ease);
+  display: inline-block;
+}
+.step h4 {
+  font-family: 'Anton', sans-serif; font-size: 26px;
+  letter-spacing: -.01em; text-transform: uppercase;
+  color: var(--ink); margin-bottom: 12px;
+}
+.step p { font-size: 14.5px; color: rgba(10,10,10,.65); line-height: 1.6; }
+
+/* WORK / VIDEO GALLERY */
+.work { background: var(--ink); padding: 140px 40px; }
+.work-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-auto-rows: minmax(280px, auto);
+  gap: 16px;
+}
+.work-tile {
+  position: relative; overflow: hidden; border-radius: 16px;
+  background: var(--ink-2); border: 1px solid var(--line);
+  cursor: pointer; transition: all .4s var(--ease);
+  aspect-ratio: 16/10;
+}
+.work-tile:hover {
+  border-color: rgba(255,106,26,.4); transform: translateY(-4px);
+}
+.work-tile.tall { grid-row: span 2; aspect-ratio: 4/5; }
+.work-tile video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.work-tile:hover video { transform: scale(1.03); }
+.work-tile-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.85) 100%);
+  pointer-events: none; z-index: 2;
+}
+.work-tile-label {
+  position: absolute; inset: 0; padding: 24px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  z-index: 3; color: var(--bone); pointer-events: none;
+}
+.work-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.work-cat {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  padding: 6px 12px;
+  background: rgba(10,10,10,.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 999px; color: var(--bone);
+}
+.work-play {
+  width: 36px; height: 36px;
+  background: rgba(10,10,10,.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  transition: all .3s var(--ease);
+  pointer-events: auto; cursor: pointer; color: var(--bone);
+}
+.work-play:hover { background: var(--orange); color: var(--ink); border-color: var(--orange); }
+.work-title {
+  font-family: 'Anton', sans-serif; font-size: 22px;
+  letter-spacing: -.01em; text-transform: uppercase;
+  line-height: 1; margin-bottom: 8px;
+}
+.work-tile.tall .work-title { font-size: 28px; }
+.work-meta { font-size: 12px; color: rgba(250,250,247,.7); letter-spacing: .05em; }
+.work-tile.featured { aspect-ratio: 16/10; }
+.work-tile.featured .work-title { font-size: 36px; }
+.work-note {
+  margin-top: 24px; padding: 18px 22px;
+  background: var(--ink-2); border: 1px solid var(--line);
+  border-radius: 12px; font-size: 13.5px;
+  color: rgba(250,250,247,.6);
+  display: flex; align-items: center; gap: 14px;
+}
+.work-note::before {
+  content: ""; flex-shrink: 0; width: 8px; height: 8px;
+  background: var(--orange); border-radius: 50%;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: var(--ink-2); padding: 140px 40px;
+  border-top: 1px solid var(--line);
+}
+.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tcard {
+  background: var(--ink); border: 1px solid var(--line);
+  border-radius: 16px; padding: 32px;
+  transition: all .35s var(--ease); position: relative;
+}
+.tcard:hover { border-color: rgba(255,106,26,.3); transform: translateY(-4px); }
+.tstars { color: var(--amber); font-size: 14px; letter-spacing: 4px; margin-bottom: 20px; }
+.tquote {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px; line-height: 1.45;
+  color: var(--bone); margin-bottom: 28px; letter-spacing: -.01em;
+}
+.tauthor {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 20px; border-top: 1px solid var(--line);
+}
+.tavatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--grad-sunset);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 15px; color: var(--ink); letter-spacing: .5px;
+}
+.tname { font-size: 14px; font-weight: 600; color: var(--bone); display: block; margin-bottom: 2px; }
+.trole { font-size: 12px; color: rgba(250,250,247,.55); }
+
+/* FAQ */
+.faq { background: var(--ink); padding: 140px 40px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+.faq-side { position: sticky; top: 100px; }
+.faq-side h3 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: .95; letter-spacing: -.01em;
+  text-transform: uppercase; color: var(--bone);
+  margin-bottom: 20px;
+}
+.faq-side h3 em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.faq-side p {
+  font-size: 15px; color: rgba(250,250,247,.7);
+  line-height: 1.6; margin-bottom: 28px; max-width: 360px;
+}
+.faq-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); transition: background .3s var(--ease); }
+.faq-item:hover { background: rgba(255,255,255,.02); }
+.faq-q {
+  width: 100%; display: flex;
+  justify-content: space-between; align-items: center;
+  gap: 16px; padding: 28px 4px;
+  font-size: 17px; font-weight: 500;
+  text-align: left; color: var(--bone);
+}
+.faq-icon {
+  flex-shrink: 0; width: 32px; height: 32px;
+  border: 1px solid var(--line); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: all .3s var(--ease);
+  color: rgba(250,250,247,.7);
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--orange); color: var(--ink); border-color: var(--orange);
+}
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
+.faq-item.open .faq-a { max-height: 240px; }
+.faq-a-inner {
+  padding: 0 4px 28px;
+  font-size: 15px; line-height: 1.65;
+  color: rgba(250,250,247,.7); max-width: 640px;
+}
+
+/* CTA BAND */
+.cta-band {
+  background: var(--paper); color: var(--ink);
+  padding: 140px 40px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: ""; position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(255,164,24,.12), transparent 60%);
+  pointer-events: none;
+}
+.cta-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+.cta-band h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: .92; letter-spacing: -.02em;
+  text-transform: uppercase; margin-bottom: 24px; color: var(--ink);
+}
+.cta-band h2 em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.cta-band p {
+  font-size: 18px; color: rgba(10,10,10,.65);
+  margin-bottom: 40px;
+  max-width: 580px; margin-left: auto; margin-right: auto;
+}
+
+/* CONTACT */
+.contact { background: var(--ink); padding: 140px 40px; }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 80px; align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.info-row {
+  padding: 26px 0; border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 20px; align-items: center;
+  transition: padding .3s var(--ease);
+}
+.info-row:hover { padding-left: 8px; }
+.info-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(250,250,247,.5);
+}
+.info-value {
+  font-family: 'Anton', sans-serif; font-size: 22px;
+  letter-spacing: .5px; color: var(--bone);
+  text-transform: uppercase; transition: color .25s;
+}
+a.info-value:hover { color: var(--orange); }
+
+.contact-form {
+  background: var(--ink-2); border: 1px solid var(--line);
+  border-radius: 20px; padding: 36px;
+}
+.contact-form h3 {
+  font-family: 'Anton', sans-serif; font-size: 32px;
+  letter-spacing: -.01em; text-transform: uppercase;
+  color: var(--bone); margin-bottom: 8px;
+}
+.contact-form h3 em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.contact-form .sub { font-size: 14px; color: rgba(250,250,247,.6); margin-bottom: 28px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { margin-bottom: 18px; }
+.field label {
+  display: block; font-size: 11px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(250,250,247,.55); margin-bottom: 8px;
+}
+.field input, .field select, .field textarea {
+  width: 100%; background: var(--ink);
+  border: 1px solid var(--line); color: var(--bone);
+  font-family: inherit; font-size: 15px;
+  padding: 14px 16px; border-radius: 10px;
+  transition: all .25s;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(250,250,247,.3); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--orange);
+  background: rgba(255,106,26,.04);
+}
+.field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(250,250,247,.5) 50%),
+    linear-gradient(135deg, rgba(250,250,247,.5) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.field textarea { resize: vertical; min-height: 110px; font-family: inherit; }
+.contact-form .btn-primary { width: 100%; justify-content: center; margin-top: 8px; }
+
+/* FOOTER */
+footer {
+  background: #050505; color: var(--bone);
+  padding: 80px 40px 28px;
+  border-top: 1px solid var(--line);
+}
+.footer-grid {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px; padding-bottom: 50px;
+  border-bottom: 1px solid var(--line);
+}
+.footer-brand-wrap {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+}
+.footer-brand-wrap img { width: 52px; height: 52px; object-fit: contain; }
+.footer-brand-text {
+  font-family: 'Anton', sans-serif; font-size: 24px;
+  letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.1;
+}
+.footer-brand-text span {
+  display: block;
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 14px; letter-spacing: -.01em; margin-top: 4px;
+  background: var(--grad-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; text-transform: none;
+}
+.footer-mission {
+  font-size: 14px; color: rgba(250,250,247,.55);
+  max-width: 340px; line-height: 1.6;
+}
+.footer-col h5 {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(250,250,247,.5); margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul li, .footer-col ul li a {
+  font-size: 14px; color: rgba(250,250,247,.7); transition: color .2s;
+}
+.footer-col ul li a:hover { color: var(--orange); }
+.footer-bottom {
+  max-width: 1400px; margin: 0 auto; padding-top: 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(250,250,247,.4);
+  flex-wrap: wrap; gap: 10px;
+}
+
+/* FLOATING MOBILE CTA */
+.floating-cta {
+  display: none; position: fixed;
+  bottom: 14px; left: 14px; right: 14px;
+  z-index: 90;
+  background: var(--bone); color: var(--ink);
+  padding: 16px 24px; border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+/* REVEAL */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .section-head { grid-template-columns: 1fr; gap: 24px; }
+  .section-head-left { padding-right: 0; }
+  .intro-grid { grid-template-columns: 1fr; gap: 60px; }
+  .intro-visual { max-width: 380px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-flow { grid-template-columns: repeat(2, 1fr); }
+  .step:nth-child(2) { border-right: 0; }
+  .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--line-dark); }
+  .step:nth-child(3) { padding-left: 0; padding-top: 36px; }
+  .step:nth-child(4) { padding-top: 36px; }
+  .work-grid { grid-template-columns: 1fr 1fr; }
+  .work-tile.tall { grid-row: span 1; aspect-ratio: 16/10; }
+  .t-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .stat-item { padding: 20px; border-left: 0; border-top: 1px solid var(--line); }
+  .stat-item:first-child, .stat-item:nth-child(2) { border-top: 0; }
+  .stat-item:first-child { padding-left: 20px; }
+  .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .faq-side { position: relative; top: auto; }
+  .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  nav.scrolled { padding: 10px 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .menu-toggle { display: block; }
+  section, .hero, .intro, .stats, .services, .process, .work, .testimonials, .faq, .cta-band, .contact {
+    padding-left: 20px; padding-right: 20px;
+  }
+  section { padding-top: 80px; padding-bottom: 80px; }
+  .hero { padding-top: 100px; padding-bottom: 50px; }
+  .intro { padding-top: 80px; padding-bottom: 80px; }
+  .cta-band, .testimonials, .work, .faq, .services, .contact, .process { padding-top: 90px; padding-bottom: 90px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .hero-actions { width: 100%; }
+  .hero-actions .btn { flex: 1; justify-content: center; padding: 14px 18px; font-size: 13px; }
+  .scroll-cue { display: none; }
+  .ticker-track span { font-size: 22px; }
+  .ticker-track span:nth-child(odd) { font-size: 26px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-flow { grid-template-columns: 1fr; }
+  .step, .step:not(:first-child) {
+    padding: 28px 0; border-right: 0; border-left: 0;
+    border-bottom: 1px solid var(--line-dark); padding-left: 0;
+  }
+  .step:last-child { border-bottom: 0; }
+  .work-grid { grid-template-columns: 1fr; }
+  .work-tile.featured, .work-tile.tall { aspect-ratio: 4/3; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-item { padding: 28px 0; }
+  .stat-item:first-child { padding-top: 0; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .floating-cta { display: block; }
+  body { padding-bottom: 78px; }
+  .contact-form { padding: 24px; }
+  .info-value { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="brand">
+    <img src="cali-kongcrete-logo.png" alt="Cali Kongcrete">
+    <span class="brand-text">Cali Kongcrete</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Estimate</a>
+  <button class="menu-toggle" aria-label="Menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878326/SnapInsta.to_AQN97ju_gC8KFkVts1pUbmpBKork3K13-6B6rTqI3HuJNo2hc8RrieJYdDBwF_CpqMmEnPJkyfawD3DaaIGHcLLfT097OUgXzQoiUbA_ns7t2q.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      Custom Concrete · Southern California
+      <span class="live-dot"></span>
+    </div>
+    <h1>
+      <span class="line"><span>Concrete that</span></span>
+      <span class="line"><span><em>finishes</em> a space.</span></span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">
+        Driveways, patios, stamped and decorative concrete — finished by hand
+        with the kind of attention most contractors stopped giving years ago.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          <span>Get Free Estimate</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="tel:9516348398" class="btn btn-glass">
+          <span>951-634-8398</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Driveways</span><span>Patios</span><span>Stamped Concrete</span><span>Stained Finishes</span><span>Pool Decks</span><span>Walkways</span><span>Retaining Walls</span><span>Custom Work</span>
+    <span>Driveways</span><span>Patios</span><span>Stamped Concrete</span><span>Stained Finishes</span><span>Pool Decks</span><span>Walkways</span><span>Retaining Walls</span><span>Custom Work</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro" id="about">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="reveal">
+        <div class="section-tag">About</div>
+        <h2 class="section-title">Built <em>once</em>.<br>Built <em>right</em>.</h2>
+        <div class="intro-text">
+          <p>We build concrete that doesn't just function — it finishes a space. Every pour is treated like it's the only one on the schedule.</p>
+          <p>Straight edges. True finishes. <strong>Properly reinforced</strong>, properly cured. The fundamentals other crews rush through are exactly where we slow down.</p>
+          <p>From clean residential driveways to fully custom stamped and stained installations, every project gets the same standard.</p>
+        </div>
+        <div class="intro-pills">
+          <span class="intro-pill">Licensed #1131136</span>
+          <span class="intro-pill">Fully Insured</span>
+          <span class="intro-pill">Free Estimates</span>
+          <span class="intro-pill">Same-Day Response</span>
+        </div>
+      </div>
+      <div class="intro-visual reveal">
+        <div class="logo-ring"></div>
+        <div class="logo-orbit"></div>
+        <div class="logo-disc">
+          <img src="cali-kongcrete-logo.png" alt="Cali Kongcrete">
+        </div>
+        <div class="logo-meta">Built To Last</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-num"><em>100</em>%</span>
+      <div class="stat-label">Licensed</div>
+      <div class="stat-desc">Lic# 1131136 · Permits handled, work warrantied.</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num"><em>24</em>hr</span>
+      <div class="stat-label">Response</div>
+      <div class="stat-desc">Most quote requests get a same-day callback.</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num"><em>6</em>+</span>
+      <div class="stat-label">Services</div>
+      <div class="stat-desc">Driveways through fully custom decorative work.</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">$<em>0</em></span>
+      <div class="stat-label">Estimate</div>
+      <div class="stat-desc">In-home consultations are completely free.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <div class="section-tag">Services</div>
+        <h2 class="section-title">What we <em>build</em>.</h2>
+      </div>
+      <p class="section-lead">Residential and commercial concrete — from clean utilitarian pours to fully custom decorative finishes, handled end-to-end.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="s-num"><span>01</span></div>
+        <h3>Driveways</h3>
+        <p>Strong, level, finished clean. New pours, replacements, and extensions built for daily use.</p>
+        <div class="s-meta">
+          <div class="s-tags"><span class="s-tag">Standard</span><span class="s-tag">Decorative</span></div>
+          <div class="s-arrow">→</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num"><span>02</span></div>
+        <h3>Patios &amp; Pool Decks</h3>
+        <p>Outdoor surfaces built for entertaining — slip-resistant, weather-tough, beautifully finished.</p>
+        <div class="s-meta">
+          <div class="s-tags"><span class="s-tag">Stamped</span><span class="s-tag">Cool-Deck</span></div>
+          <div class="s-arrow">→</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num"><span>03</span></div>
+        <h3>Stamped Concrete</h3>
+        <p>Slate, stone, brick, wood plank — premium looks engineered into the slab and sealed for life.</p>
+        <div class="s-meta">
+          <div class="s-tags"><span class="s-tag">Patterned</span><span class="s-tag">Custom</span></div>
+          <div class="s-arrow">→</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num"><span>04</span></div>
+        <h3>Stained &amp; Polished</h3>
+        <p>Acid stains, water-based finishes, and polished concrete — color and depth indoors and out.</p>
+        <div class="s-meta">
+          <div class="s-tags"><span class="s-tag">Interior</span><span class="s-tag">Garage</span></div>
+          <div class="s-arrow">→</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num"><span>05</span></div>
+        <h3>Walkways &amp; Steps</h3>
+        <p>Pathways, entry steps, and side yards finished to match the rest of your property's character.</p>
+        <div class="s-meta">
+          <div class="s-tags"><span class="s-tag">Custom</span><span class="s-tag">ADA</span></div>
+          <div class="s-arrow">→</div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num"><span>06</span></div>
+        <h3>Retaining Walls</h3>
+        <p>Engineered to hold the line. Block, poured, and decorative options for slopes and grade changes.</p>
+        <div class="s-meta">
+          <div class="s-tags"><span class="s-tag">Engineered</span><span class="s-tag">Drainage</span></div>
+          <div class="s-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <div class="section-tag">Process</div>
+        <h2 class="section-title">How we <em>work</em>.</h2>
+      </div>
+      <p class="section-lead">Simple, transparent, no surprises — from the first phone call to the final walk-through.</p>
+    </div>
+    <div class="process-flow">
+      <div class="step reveal">
+        <div class="step-num"><em>01</em></div>
+        <h4>Consult</h4>
+        <p>We come to you, measure up, and listen to what you actually want — no pressure, no upsell.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"><em>02</em></div>
+        <h4>Quote</h4>
+        <p>Detailed written estimate. Materials, finishes, timeline — everything on one page.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"><em>03</em></div>
+        <h4>Build</h4>
+        <p>Crew arrives on schedule. Site stays clean. We communicate every step from form to finish.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"><em>04</em></div>
+        <h4>Walk-Through</h4>
+        <p>Final inspection together. Care instructions in your hand. Workmanship guaranteed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / VIDEO GALLERY -->
+<section class="work" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <div class="section-tag">Selected Work</div>
+        <h2 class="section-title">Recent <em>projects</em>.</h2>
+      </div>
+      <p class="section-lead">A look at the recent custom work. Every job is different, every detail intentional. Hover to play, or scroll through on mobile.</p>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-tile featured reveal">
+        <video muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878617/SnapInsta.to_AQOCTjteYGOy4Fgj2Qphe8c8ZZrqGn2X7_hEQw_SxanCeiegv3_SKKmqnOTyhSrlytU1XtGn2KHVqfLipmbHBrX9KpGB6eVqSE4PXOE_zza736.mp4"></video>
+        <div class="work-tile-overlay"></div>
+        <div class="work-tile-label">
+          <div class="work-top">
+            <span class="work-cat">Featured</span>
+            <button class="work-play" aria-label="Play">▶</button>
+          </div>
+          <div>
+            <div class="work-title">Custom Build</div>
+            <div class="work-meta">Concrete Craftsmanship · SoCal</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-tile tall reveal">
+        <video muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878483/SnapInsta.to_AQNYpFVqyU2d5UAw4B1EB4LtwyoguuGMzNotc5xSPYU134WcbkylTwWxFKbWepHpJy4IghW-cSZ_hwDynnJMdbZd18wsHUKhN6Jv2xk_urecxg.mp4"></video>
+        <div class="work-tile-overlay"></div>
+        <div class="work-tile-label">
+          <div class="work-top">
+            <span class="work-cat">In Progress</span>
+            <button class="work-play" aria-label="Play">▶</button>
+          </div>
+          <div>
+            <div class="work-title">On Site</div>
+            <div class="work-meta">Form &amp; Finish</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-tile reveal">
+        <video muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878427/SnapInsta.to_AQPfUZMQ5HJ7R2xro5C8mlQZZ0rHsOS3Zbtvf3ixFcJH_g0nJzmFCKo5N1thD6x6QhhEikhLAHcqIrKbh3eSwqX7BVS3KkF-hi-SKa8_lsboil.mp4"></video>
+        <div class="work-tile-overlay"></div>
+        <div class="work-tile-label">
+          <div class="work-top">
+            <span class="work-cat">Detail</span>
+            <button class="work-play" aria-label="Play">▶</button>
+          </div>
+          <div>
+            <div class="work-title">Finishing Touches</div>
+            <div class="work-meta">Custom Decorative</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-tile reveal">
+        <video muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878384/SnapInsta.to_AQPOd6xDhquJJZefOPVDvPlFryk4pYPiNryoPGPks6coOGCRnIgLOx2CsC5hvPimZi-ZgtLQEsdUMALIJWDAmWPB_mgufhl.mp4"></video>
+        <div class="work-tile-overlay"></div>
+        <div class="work-tile-label">
+          <div class="work-top">
+            <span class="work-cat">Project</span>
+            <button class="work-play" aria-label="Play">▶</button>
+          </div>
+          <div>
+            <div class="work-title">Behind the Build</div>
+            <div class="work-meta">Process · Pour · Finish</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-note">
+      More work on Instagram <a href="https://www.instagram.com/calikongcrete" target="_blank" rel="noopener" style="color: var(--orange); margin-left: 6px;">@calikongcrete →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <div class="section-tag">Reviews</div>
+        <h2 class="section-title">What clients <em>say</em>.</h2>
+      </div>
+      <p class="section-lead">A few words from people whose properties we've worked on.</p>
+    </div>
+    <div class="t-grid">
+      <div class="tcard reveal">
+        <div class="tstars">★ ★ ★ ★ ★</div>
+        <p class="tquote">"Crew was on time, the driveway looks incredible, and they cleaned up better than I expected. This is how concrete should be done."</p>
+        <div class="tauthor">
+          <div class="tavatar">JM</div>
+          <div>
+            <span class="tname">J. Martinez</span>
+            <span class="trole">Driveway Replacement</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="tstars">★ ★ ★ ★ ★</div>
+        <p class="tquote">"The stamped patio is a centerpiece now. Quote was clear, timeline was honest, and the finish is exactly what we asked for."</p>
+        <div class="tauthor">
+          <div class="tavatar">AR</div>
+          <div>
+            <span class="tname">A. Rivera</span>
+            <span class="trole">Stamped Patio</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="tstars">★ ★ ★ ★ ★</div>
+        <p class="tquote">"Got three quotes — Cali Kongcrete wasn't the cheapest but the work was easily the best. Worth every dollar."</p>
+        <div class="tauthor">
+          <div class="tavatar">DK</div>
+          <div>
+            <span class="tname">D. Kim</span>
+            <span class="trole">Pool Deck</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-side reveal">
+        <div class="section-tag">FAQ</div>
+        <h3>Got <em>questions</em>?</h3>
+        <p>The fastest way to get a real answer about your project is a quick phone call. Free, no pressure.</p>
+        <a href="tel:9516348398" class="btn btn-primary">
+          <span>Call 951-634-8398</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q"><span>Do you offer free estimates?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — every estimate is completely free with no obligation. We come out, measure, and give you a written quote with everything spelled out.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Are you licensed and insured?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Cali Kongcrete carries California license #1131136 and full liability insurance. Permits, code compliance, and workmanship warranty are part of every job.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>How long does a typical project take?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Timelines depend on size and finish. Most residential driveways take 2–5 days from demo to final cure. Decorative and stamped work adds time for the finish phase. Every quote includes a written timeline.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What areas do you serve?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">We serve Southern California. Call us with your zip code and we'll confirm coverage and any travel considerations on the spot.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Can you match existing concrete on my property?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — color matching and finish matching are part of what we do. For decorative work, we'll bring samples to the consult so you can see options against your existing surface.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Do you handle removal of old concrete?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Absolutely. Tear-out, haul-off, and disposal are included in driveway replacements and similar jobs. We leave the site clean.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Let's build something <em>that lasts</em>.</h2>
+    <p>Free estimates · Same-day response · Work that holds up</p>
+    <a href="#contact" class="btn btn-dark">
+      <span>Request Your Estimate</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <div class="section-tag">Contact</div>
+        <h2 class="section-title">Get in <em>touch</em>.</h2>
+      </div>
+      <p class="section-lead">Tell us about your project. We'll be back in touch fast with next steps and a free estimate.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-row">
+          <span class="info-label">Call</span>
+          <a href="tel:9516348398" class="info-value">951-634-8398</a>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Instagram</span>
+          <a href="https://www.instagram.com/calikongcrete" target="_blank" rel="noopener" class="info-value">@calikongcrete</a>
+        </div>
+        <div class="info-row">
+          <span class="info-label">License</span>
+          <span class="info-value">#1131136</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Service Area</span>
+          <span class="info-value">Southern California</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Response</span>
+          <span class="info-value">Same Day</span>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+        <h3>Request an <em>estimate</em></h3>
+        <p class="sub">Most messages get a response same-day.</p>
+        <div class="field-row">
+          <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required placeholder="Your name" /></div>
+          <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" required placeholder="555-555-5555" /></div>
+        </div>
+        <div class="field">
+          <label for="service">Project Type</label>
+          <select id="service" name="service" required>
+            <option value="">Select one</option>
+            <option>Driveway</option>
+            <option>Patio / Pool Deck</option>
+            <option>Stamped Concrete</option>
+            <option>Stained / Polished</option>
+            <option>Walkway / Steps</option>
+            <option>Retaining Wall</option>
+            <option>Other / Custom</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Square footage, finish you're after, timeline..."></textarea></div>
+        <button type="submit" class="btn btn-primary">
+          <span>Send Request</span>
+          <span class="arrow">→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-wrap">
+        <img src="cali-kongcrete-logo.png" alt="Cali Kongcrete">
+        <div class="footer-brand-text">Cali Kongcrete<span>Built to last</span></div>
+      </div>
+      <p class="footer-mission">Custom concrete craftsmanship across Southern California. Driveways, patios, stamped &amp; decorative work — every job built like it's our own.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Driveways</a></li>
+        <li><a href="#services">Patios</a></li>
+        <li><a href="#services">Stamped</a></li>
+        <li><a href="#services">Stained</a></li>
+        <li><a href="#services">Walls</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:9516348398">951-634-8398</a></li>
+        <li><a href="https://www.instagram.com/calikongcrete" target="_blank" rel="noopener">@calikongcrete</a></li>
+        <li>Lic# 1131136</li>
+        <li>Fully Insured</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> Cali Kongcrete · All Rights Reserved</div>
+    <div>Licensed · Bonded · Insured</div>
+  </div>
+</footer>
+
+<a href="tel:9516348398" class="floating-cta">📞 Call · 951-634-8398</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+document.querySelectorAll('.services-grid .reveal').forEach((el, i) => el.style.transitionDelay = (i * 70) + 'ms');
+document.querySelectorAll('.process-flow .step').forEach((el, i) => el.style.transitionDelay = (i * 90) + 'ms');
+document.querySelectorAll('.work-grid .work-tile').forEach((el, i) => el.style.transitionDelay = (i * 80) + 'ms');
+document.querySelectorAll('.t-grid .tcard').forEach((el, i) => el.style.transitionDelay = (i * 100) + 'ms');
+document.querySelectorAll('.stats-grid .stat-item').forEach((el, i) => el.style.transitionDelay = (i * 70) + 'ms');
+
+// Video tiles
+const videoTiles = document.querySelectorAll('.work-tile video');
+const isCoarse = matchMedia('(hover: none)').matches;
+if (isCoarse) {
+  const videoIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && e.intersectionRatio > 0.4) v.play().catch(() => {});
+      else v.pause();
+    });
+  }, { threshold: [0, 0.4, 0.6] });
+  videoTiles.forEach(v => videoIO.observe(v));
+} else {
+  videoTiles.forEach(v => {
+    const tile = v.closest('.work-tile');
+    tile.addEventListener('mouseenter', () => v.play().catch(() => {}));
+    tile.addEventListener('mouseleave', () => v.pause());
+  });
+}
+
+// FAQ
+document.querySelectorAll('.faq-item .faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+});
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  alert('Thanks ' + data.get('name') + '. We will call ' + data.get('phone') + ' shortly.');
+  e.target.reset();
+}
+
+// Count-up
+const statNums = document.querySelectorAll('.stat-num');
+const statIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const em = entry.target.querySelector('em');
+      if (!em) return;
+      const target = parseInt(em.textContent, 10);
+      if (isNaN(target)) return;
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        em.textContent = Math.floor(target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+        else em.textContent = target;
+      }
+      requestAnimationFrame(tick);
+      statIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+statNums.forEach(s => statIO.observe(s));
+</script>
+
+</body>
+</html>
