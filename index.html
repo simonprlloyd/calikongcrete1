@@ -2802,6 +2802,220 @@ footer {
   .hero-gorilla { display: none; }
 }
 
+
+/* =========================================================
+   TEXT-ONLY SERVICES LIST
+   ========================================================= */
+.services-list {
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.srv-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 40px;
+  align-items: start;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: padding 0.35s var(--ease), background 0.35s var(--ease);
+  cursor: default;
+}
+.srv-row::before {
+  content: "";
+  position: absolute;
+  left: -24px; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--grad-sunset);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease);
+}
+.srv-row:hover::before {
+  transform: scaleY(1);
+}
+.srv-row:hover {
+  padding-left: 24px;
+}
+.srv-num {
+  font-family: 'Anton', sans-serif;
+  font-size: 48px;
+  line-height: 0.9;
+  background: var(--grad-sunset);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradShift 8s ease-in-out infinite;
+}
+.srv-body h3 {
+  font-family: 'Anton', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 10px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+.srv-row:hover .srv-body h3 {
+  color: var(--orange);
+}
+.srv-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(250,250,247,0.7);
+  max-width: 640px;
+  margin-bottom: 14px;
+}
+.srv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.srv-tags span {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250,250,247,0.6);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.srv-arrow {
+  align-self: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  color: rgba(250,250,247,0.3);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.srv-row:hover .srv-arrow {
+  transform: translateX(8px);
+  color: var(--orange);
+}
+.srv-cta {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(255,106,26,0.08), rgba(255,208,25,0.04));
+  border: 1px solid rgba(255,106,26,0.2);
+  border-radius: 18px;
+}
+.srv-cta p {
+  font-size: 16px;
+  color: var(--bone);
+  margin: 0;
+}
+
+/* =========================================================
+   MEDIA GALLERY (work section, no labels)
+   ========================================================= */
+.gallery-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 180px;
+  gap: 12px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0a0a0a;
+  cursor: pointer;
+  transform: translateZ(0);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 80px rgba(255,106,26,0.2);
+  z-index: 2;
+}
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-sunset);
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.gallery-item:hover::after { opacity: 0.18; }
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.gallery-item:hover img,
+.gallery-item:hover video {
+  transform: scale(1.05);
+}
+
+/* Asymmetric layout — varied tile sizes for visual interest */
+.gi-img-1 { grid-column: span 4; grid-row: span 2; }
+.gi-vid-1 { grid-column: span 2; grid-row: span 2; }
+.gi-vid-2 { grid-column: span 2; grid-row: span 2; }
+.gi-img-2 { grid-column: span 2; grid-row: span 2; }
+.gi-vid-3 { grid-column: span 2; grid-row: span 2; }
+.gi-vid-4 { grid-column: span 4; grid-row: span 2; }
+
+.gallery-cta {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* MOBILE: services rows tighten, gallery becomes 2-col uniform */
+@media (max-width: 768px) {
+  .srv-row {
+    grid-template-columns: 50px 1fr 28px;
+    gap: 14px;
+    padding: 22px 0;
+  }
+  .srv-row::before { left: -16px; }
+  .srv-row:hover { padding-left: 16px; }
+  .srv-num { font-size: 32px; }
+  .srv-body h3 { font-size: 24px; }
+  .srv-body p { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+  .srv-tags span { font-size: 9px; padding: 4px 8px; }
+  .srv-arrow { font-size: 22px; }
+
+  .srv-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 22px 18px;
+    border-radius: 14px;
+  }
+  .srv-cta p { font-size: 14px; }
+  .srv-cta .btn { width: 100%; justify-content: center; }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+    gap: 8px;
+  }
+  .gi-img-1, .gi-vid-1, .gi-vid-2, .gi-img-2, .gi-vid-3, .gi-vid-4 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  /* Give the two strongest pieces (image 1, video 4) double height */
+  .gi-img-1 { grid-column: span 2; grid-row: span 2; }
+  .gi-vid-4 { grid-column: span 2; grid-row: span 2; }
+}
+@media (max-width: 480px) {
+  .srv-num { font-size: 28px; }
+  .srv-body h3 { font-size: 22px; }
+  .gallery-grid { grid-auto-rows: 130px; }
+}
+
 </style>
 
 <script>
@@ -2921,17 +3135,6 @@ footer {
     <span class="spark" style="left:92%; animation-delay:4.5s;"></span>
   </div>
 
-  <!-- FLOATING GORILLA LOGO (the centerpiece) -->
-  <div class="hero-gorilla" aria-hidden="true">
-    <div class="hero-gorilla-ring"></div>
-    <div class="hero-gorilla-glow"></div>
-    <img src="cali-kongcrete-logo.png" alt="">
-    <div class="hero-gorilla-badge top"><span>★</span> Lic #1131136</div>
-    <div class="hero-gorilla-badge right">5★ Rated</div>
-    <div class="hero-gorilla-badge bottom">Built To Last</div>
-    <div class="hero-gorilla-badge left">Hemet, CA</div>
-  </div>
-
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <span class="live-dot"></span>
@@ -3049,136 +3252,70 @@ footer {
         <div class="section-tag">Services</div>
         <h2 class="section-title">What we <em>build</em>.</h2>
       </div>
-      <p class="section-lead">Residential and commercial concrete — from clean utilitarian pours to fully custom decorative finishes, handled end-to-end. Built strong. Finished sharp.</p>
+      <p class="section-lead">Residential and commercial concrete — from clean utilitarian pours to fully custom decorative finishes, plus premium artificial turf. Handled end-to-end. Built strong. Finished sharp.</p>
     </div>
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <div class="service-media">
-          <span class="media-badge">Project Footage</span>
-          <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878617/SnapInsta.to_AQOCTjteYGOy4Fgj2Qphe8c8ZZrqGn2X7_hEQw_SxanCeiegv3_SKKmqnOTyhSrlytU1XtGn2KHVqfLipmbHBrX9KpGB6eVqSE4PXOE_zza736.mp4"></video>
-          <div class="service-media-overlay"></div>
-        </div>
-        <div class="service-content">
-          <div class="s-num"><span>01</span></div>
+    <div class="services-list">
+      <article class="srv-row reveal">
+        <div class="srv-num">01</div>
+        <div class="srv-body">
           <h3>Driveways</h3>
           <p>Strong, level, finished clean. New pours, replacements, and extensions built for daily use.</p>
-          <div class="s-meta">
-            <div class="s-tags"><span class="s-tag">Standard</span><span class="s-tag">Decorative</span></div>
-            <div class="s-arrow">→</div>
-          </div>
+          <div class="srv-tags"><span>Standard</span><span>Decorative</span><span>Replacement</span></div>
         </div>
+        <div class="srv-arrow">→</div>
       </article>
-
-      <article class="service-card reveal">
-        <div class="service-media">
-          <span class="media-badge">Project Footage</span>
-          <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878483/SnapInsta.to_AQNYpFVqyU2d5UAw4B1EB4LtwyoguuGMzNotc5xSPYU134WcbkylTwWxFKbWepHpJy4IghW-cSZ_hwDynnJMdbZd18wsHUKhN6Jv2xk_urecxg.mp4"></video>
-          <div class="service-media-overlay"></div>
-        </div>
-        <div class="service-content">
-          <div class="s-num"><span>02</span></div>
+      <article class="srv-row reveal">
+        <div class="srv-num">02</div>
+        <div class="srv-body">
           <h3>Patios &amp; Pool Decks</h3>
-          <p>Outdoor surfaces built for entertaining — slip-resistant, weather-tough, beautifully finished.</p>
-          <div class="s-meta">
-            <div class="s-tags"><span class="s-tag">Stamped</span><span class="s-tag">Cool-Deck</span></div>
-            <div class="s-arrow">→</div>
-          </div>
+          <p>Outdoor living spaces with proper drainage, finish, and slip-resistance — built to last in the SoCal sun.</p>
+          <div class="srv-tags"><span>Smooth</span><span>Broom</span><span>Stamped</span></div>
         </div>
+        <div class="srv-arrow">→</div>
       </article>
-
-      <article class="service-card reveal">
-        <div class="service-media">
-          <span class="media-badge">Project Footage</span>
-          <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878427/SnapInsta.to_AQPfUZMQ5HJ7R2xro5C8mlQZZ0rHsOS3Zbtvf3ixFcJH_g0nJzmFCKo5N1thD6x6QhhEikhLAHcqIrKbh3eSwqX7BVS3KkF-hi-SKa8_lsboil.mp4"></video>
-          <div class="service-media-overlay"></div>
-        </div>
-        <div class="service-content">
-          <div class="s-num"><span>03</span></div>
+      <article class="srv-row reveal">
+        <div class="srv-num">03</div>
+        <div class="srv-body">
           <h3>Stamped Concrete</h3>
-          <p>Slate, stone, brick, wood plank — premium looks engineered into the slab and sealed for life.</p>
-          <div class="s-meta">
-            <div class="s-tags"><span class="s-tag">Patterned</span><span class="s-tag">Custom</span></div>
-            <div class="s-arrow">→</div>
-          </div>
+          <p>Patterns, textures, and color hardeners. Slate, cobblestone, wood plank — the upgrade that makes a property.</p>
+          <div class="srv-tags"><span>Pattern</span><span>Color</span><span>Sealed</span></div>
         </div>
+        <div class="srv-arrow">→</div>
       </article>
-
-      <article class="service-card reveal">
-        <div class="service-media">
-          <span class="media-badge">Project Footage</span>
-          <video class="service-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878384/SnapInsta.to_AQPOd6xDhquJJZefOPVDvPlFryk4pYPiNryoPGPks6coOGCRnIgLOx2CsC5hvPimZi-ZgtLQEsdUMALIJWDAmWPB_mgufhl.mp4"></video>
-          <div class="service-media-overlay"></div>
-        </div>
-        <div class="service-content">
-          <div class="s-num"><span>04</span></div>
+      <article class="srv-row reveal">
+        <div class="srv-num">04</div>
+        <div class="srv-body">
           <h3>Stained &amp; Polished</h3>
           <p>Acid stains, water-based finishes, and polished concrete — color and depth indoors and out.</p>
-          <div class="s-meta">
-            <div class="s-tags"><span class="s-tag">Interior</span><span class="s-tag">Garage</span></div>
-            <div class="s-arrow">→</div>
-          </div>
+          <div class="srv-tags"><span>Interior</span><span>Garage</span><span>Polished</span></div>
         </div>
+        <div class="srv-arrow">→</div>
       </article>
-
-      <article class="service-card reveal">
-        <div class="service-media">
-          <span class="media-badge">Project Footage</span>
-          <img class="service-image" src="https://res.cloudinary.com/dycutbccb/image/upload/v1778882427/SnapInsta.to_632803828_18082266014334751_6749522911347697981_n_gwbs4a.jpg" alt="Cali Kongcrete walkway and steps project">
-          <div class="service-media-overlay"></div>
-        </div>
-        <div class="service-content">
-          <div class="s-num"><span>05</span></div>
+      <article class="srv-row reveal">
+        <div class="srv-num">05</div>
+        <div class="srv-body">
           <h3>Walkways &amp; Steps</h3>
           <p>Pathways, entry steps, and side yards finished to match the rest of your property's character.</p>
-          <div class="s-meta">
-            <div class="s-tags"><span class="s-tag">Custom</span><span class="s-tag">ADA</span></div>
-            <div class="s-arrow">→</div>
-          </div>
+          <div class="srv-tags"><span>Custom</span><span>ADA</span><span>Decorative</span></div>
         </div>
+        <div class="srv-arrow">→</div>
       </article>
-
-      <article class="service-card reveal">
-        <div class="service-media">
-          <div class="turf-placeholder" aria-hidden="true">
-            <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="turfBg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#1a3d1f"/>
-                  <stop offset="100%" stop-color="#0c1f0e"/>
-                </linearGradient>
-                <pattern id="turfBlades" x="0" y="0" width="14" height="18" patternUnits="userSpaceOnUse">
-                  <path d="M 3 18 L 5 4 L 7 18 Z" fill="#3d8a3f" opacity="0.7"/>
-                  <path d="M 9 18 L 11 6 L 13 18 Z" fill="#4faa52" opacity="0.55"/>
-                  <path d="M 6 18 L 8 10 L 10 18 Z" fill="#5ec062" opacity="0.4"/>
-                </pattern>
-              </defs>
-              <rect width="240" height="140" fill="url(#turfBg)"/>
-              <rect width="240" height="140" fill="url(#turfBlades)"/>
-            </svg>
-            <div class="turf-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" stroke="#FAFAF7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 56 L8 40 M8 40 C 8 32, 12 28, 16 28 C 12 22, 14 16, 18 14 C 16 8, 20 4, 24 8 C 24 4, 28 4, 30 8 C 32 4, 36 4, 36 8 C 40 4, 44 8, 42 14 C 46 16, 48 22, 44 28 C 48 28, 52 32, 52 40 L 52 56 Z"/>
-                <line x1="14" y1="56" x2="14" y2="36"/>
-                <line x1="22" y1="56" x2="22" y2="28"/>
-                <line x1="30" y1="56" x2="30" y2="22"/>
-                <line x1="38" y1="56" x2="38" y2="28"/>
-                <line x1="46" y1="56" x2="46" y2="36"/>
-              </svg>
-            </div>
-          </div>
-          <div class="service-media-overlay"></div>
-        </div>
-        <div class="service-content">
-          <div class="s-num"><span>06</span></div>
+      <article class="srv-row reveal">
+        <div class="srv-num">06</div>
+        <div class="srv-body">
           <h3>Artificial Turf</h3>
-          <p>Premium synthetic turf installed over a proper base. Pet-safe, drought-friendly, looks real all year — no mowing, no brown spots.</p>
-          <div class="s-meta">
-            <div class="s-tags"><span class="s-tag">Pet-Safe</span><span class="s-tag">Drought-Friendly</span></div>
-            <div class="s-arrow">→</div>
-          </div>
+          <p>Premium synthetic turf over a proper base. Pet-safe, drought-friendly, looks real all year — no mowing, no brown spots.</p>
+          <div class="srv-tags"><span>Pet-Safe</span><span>Drought-Friendly</span><span>Low Maintenance</span></div>
         </div>
+        <div class="srv-arrow">→</div>
       </article>
-
+    </div>
+    <div class="srv-cta reveal">
+      <p>Don't see your project listed? We do custom work too.</p>
+      <a href="#contact" class="btn btn-primary">
+        <span>Ask About Your Project</span>
+        <span class="arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -3359,33 +3496,42 @@ footer {
 <!-- WORK / VIDEO GALLERY — BIGGER -->
 
 <div class="divider-stripe" aria-hidden="true"></div>
-<section class="work" id="work" aria-label="Recent work">
+<section class="work" id="work" aria-label="Project gallery">
   <div class="container">
     <div class="section-head reveal">
       <div class="section-head-left">
-        <div class="section-tag">Selected Work</div>
-        <h2 class="section-title">Recent <em>projects</em>.</h2>
+        <div class="section-tag">Gallery</div>
+        <h2 class="section-title">Work in <em>motion</em>.</h2>
       </div>
-      <p class="section-lead">A look at recent custom work across Southern California. Every job is different, every detail intentional.</p>
+      <p class="section-lead">A look at recent jobs across Southern California — pours, finishes, and details from the field.</p>
     </div>
 
-    <div class="work-grid">
-      <article class="work-tile featured reveal">
-        <span class="media-badge">Project Footage</span>
-        <img class="work-image" src="https://res.cloudinary.com/dycutbccb/image/upload/v1778882534/SnapInsta.to_583039738_18073617011334751_3973893129851148261_n_kyju3n.jpg" alt="Featured Cali Kongcrete project">
-        <div class="work-tile-overlay"></div>
-        <div class="work-tile-label">
-          <div class="work-top">
-            <span class="work-cat">From the Field</span>
-          </div>
-          <div>
-            <h3 class="work-title">Concrete Work</h3>
-            <div class="work-meta">Southern California</div>
-          </div>
-        </div>
-      </article>
+    <div class="gallery-grid">
+      <div class="gallery-item gi-img-1 reveal">
+        <img src="https://res.cloudinary.com/dycutbccb/image/upload/v1778882534/SnapInsta.to_583039738_18073617011334751_3973893129851148261_n_kyju3n.jpg" alt="" loading="lazy">
+      </div>
+      <div class="gallery-item gi-vid-1 reveal">
+        <video autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878617/SnapInsta.to_AQOCTjteYGOy4Fgj2Qphe8c8ZZrqGn2X7_hEQw_SxanCeiegv3_SKKmqnOTyhSrlytU1XtGn2KHVqfLipmbHBrX9KpGB6eVqSE4PXOE_zza736.mp4"></video>
+      </div>
+      <div class="gallery-item gi-vid-2 reveal">
+        <video autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878483/SnapInsta.to_AQNYpFVqyU2d5UAw4B1EB4LtwyoguuGMzNotc5xSPYU134WcbkylTwWxFKbWepHpJy4IghW-cSZ_hwDynnJMdbZd18wsHUKhN6Jv2xk_urecxg.mp4"></video>
+      </div>
+      <div class="gallery-item gi-img-2 reveal">
+        <img src="https://res.cloudinary.com/dycutbccb/image/upload/v1778882427/SnapInsta.to_632803828_18082266014334751_6749522911347697981_n_gwbs4a.jpg" alt="" loading="lazy">
+      </div>
+      <div class="gallery-item gi-vid-3 reveal">
+        <video autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878427/SnapInsta.to_AQPfUZMQ5HJ7R2xro5C8mlQZZ0rHsOS3Zbtvf3ixFcJH_g0nJzmFCKo5N1thD6x6QhhEikhLAHcqIrKbh3eSwqX7BVS3KkF-hi-SKa8_lsboil.mp4"></video>
+      </div>
+      <div class="gallery-item gi-vid-4 reveal">
+        <video autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878384/SnapInsta.to_AQPOd6xDhquJJZefOPVDvPlFryk4pYPiNryoPGPks6coOGCRnIgLOx2CsC5hvPimZi-ZgtLQEsdUMALIJWDAmWPB_mgufhl.mp4"></video>
+      </div>
+    </div>
 
-
+    <div class="gallery-cta reveal">
+      <a href="https://www.instagram.com/calikongcrete" target="_blank" rel="noopener" class="btn btn-glass">
+        <span>See more on Instagram</span>
+        <span class="arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
