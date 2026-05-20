@@ -155,13 +155,13 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 ::selection { background: var(--orange); color: var(--ink); }
 
 /* NAV */
-nav {
+nav#nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 22px 48px;
   display: flex; align-items: center; justify-content: space-between;
   transition: all .35s var(--ease);
 }
-nav.scrolled {
+nav#nav.scrolled {
   padding: 14px 48px;
   background: rgba(10,10,10,.85);
   backdrop-filter: blur(24px) saturate(140%);
@@ -1607,8 +1607,8 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav { padding: 14px 20px; }
-  nav.scrolled { padding: 10px 20px; }
+  nav#nav { padding: 14px 20px; }
+  nav#nav.scrolled { padding: 10px 20px; }
   .nav-links, .nav-cta { display: none; }
   .menu-toggle { display: block; }
   section, .hero, .intro, .stats, .services, .process, .work, .testimonials, .faq, .cta-band, .contact, .instagram-section {
