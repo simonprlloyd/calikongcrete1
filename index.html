@@ -1703,44 +1703,7 @@ footer {
 }
 
 /* Hero spark particles */
-/* PALM TREES — Cali frame, mirrors logo style */
-.palm {
-  position: absolute;
-  bottom: 0;
-  width: clamp(200px, 24vw, 360px);
-  height: auto;
-  z-index: 2;
-  pointer-events: none;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
-  animation: palmSway 8s ease-in-out infinite;
-  transform-origin: bottom center;
-}
-.palm-left {
-  left: -3%;
-}
-.palm-right {
-  right: -3%;
-  animation-delay: -4s;
-  animation-direction: alternate-reverse;
-}
-@keyframes palmSway {
-  0%, 100% { transform: rotate(-1.5deg); }
-  50%      { transform: rotate(1.5deg); }
-}
-@media (max-width: 768px) {
-  .palm {
-    width: 140px;
-    opacity: 0.75;
-  }
-  .palm-left { left: -5%; }
-  .palm-right { right: -5%; }
-}
-@media (max-width: 480px) {
-  .palm {
-    width: 110px;
-    opacity: 0.6;
-  }
-}
+
 
 .hero-sparks {
   position: absolute; inset: 0;
@@ -3157,94 +3120,6 @@ footer {
     <source src="https://res.cloudinary.com/dycutbccb/video/upload/v1778878326/SnapInsta.to_AQN97ju_gC8KFkVts1pUbmpBKork3K13-6B6rTqI3HuJNo2hc8RrieJYdDBwF_CpqMmEnPJkyfawD3DaaIGHcLLfT097OUgXzQoiUbA_ns7t2q.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-
-  <!-- PALM TREES — curving out on both sides like the logo -->
-  <svg class="palm palm-left" viewBox="0 0 220 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMinYMax meet">
-    <defs>
-      <linearGradient id="trunkGradLeft" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#3d2818"/>
-        <stop offset="50%" stop-color="#5a3a22"/>
-        <stop offset="100%" stop-color="#3d2818"/>
-      </linearGradient>
-      <linearGradient id="frondGradLeft" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#5ec062"/>
-        <stop offset="100%" stop-color="#2d7a32"/>
-      </linearGradient>
-    </defs>
-    <!-- Trunk: curves outward (left side curves leftward) -->
-    <path d="M 30 700 Q 10 500, 25 300 Q 35 180, 60 100" fill="none" stroke="url(#trunkGradLeft)" stroke-width="14" stroke-linecap="round"/>
-    <!-- Trunk texture rings -->
-    <g stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7">
-      <path d="M 16 620 Q 22 618, 30 620"/>
-      <path d="M 14 560 Q 20 558, 28 560"/>
-      <path d="M 14 500 Q 22 498, 30 500"/>
-      <path d="M 16 440 Q 24 438, 32 440"/>
-      <path d="M 20 380 Q 28 378, 36 380"/>
-      <path d="M 24 320 Q 32 318, 40 320"/>
-      <path d="M 30 260 Q 38 258, 46 260"/>
-      <path d="M 38 200 Q 46 198, 54 200"/>
-      <path d="M 46 150 Q 54 148, 62 150"/>
-    </g>
-    <!-- Coconuts cluster -->
-    <g fill="#3d2818">
-      <circle cx="55" cy="115" r="6"/>
-      <circle cx="64" cy="110" r="5"/>
-      <circle cx="58" cy="125" r="5"/>
-    </g>
-    <!-- Fronds: 8 leaves radiating from top -->
-    <g fill="url(#frondGradLeft)">
-      <path d="M 60 100 Q 30 70, 5 50 Q 25 65, 40 85 Q 30 80, 15 75 Q 35 80, 50 95 Z"/>
-      <path d="M 60 100 Q 80 50, 110 20 Q 90 50, 80 80 Q 95 60, 105 50 Q 90 70, 75 90 Z"/>
-      <path d="M 60 100 Q 100 80, 140 80 Q 115 90, 95 95 Q 120 90, 135 95 Q 110 100, 85 105 Z"/>
-      <path d="M 60 100 Q 90 130, 120 160 Q 95 140, 80 130 Q 105 150, 115 165 Q 90 150, 75 140 Z"/>
-      <path d="M 60 100 Q 40 130, 25 165 Q 45 140, 55 125 Q 35 150, 30 170 Q 50 150, 60 135 Z"/>
-      <path d="M 60 100 Q 30 90, 0 95 Q 25 95, 45 105 Q 20 100, 5 110 Q 30 105, 50 110 Z"/>
-      <path d="M 60 100 Q 55 65, 50 30 Q 60 60, 62 85 Q 55 55, 50 45 Q 60 75, 65 95 Z"/>
-      <path d="M 60 100 Q 95 95, 130 110 Q 105 105, 85 105 Q 110 110, 125 120 Q 95 110, 75 110 Z"/>
-    </g>
-  </svg>
-
-  <svg class="palm palm-right" viewBox="0 0 220 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMaxYMax meet">
-    <defs>
-      <linearGradient id="trunkGradRight" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#3d2818"/>
-        <stop offset="50%" stop-color="#5a3a22"/>
-        <stop offset="100%" stop-color="#3d2818"/>
-      </linearGradient>
-      <linearGradient id="frondGradRight" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#5ec062"/>
-        <stop offset="100%" stop-color="#2d7a32"/>
-      </linearGradient>
-    </defs>
-    <!-- Trunk: curves outward (right side curves rightward) -->
-    <path d="M 190 700 Q 210 500, 195 300 Q 185 180, 160 100" fill="none" stroke="url(#trunkGradRight)" stroke-width="14" stroke-linecap="round"/>
-    <g stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7">
-      <path d="M 204 620 Q 198 618, 190 620"/>
-      <path d="M 206 560 Q 200 558, 192 560"/>
-      <path d="M 206 500 Q 198 498, 190 500"/>
-      <path d="M 204 440 Q 196 438, 188 440"/>
-      <path d="M 200 380 Q 192 378, 184 380"/>
-      <path d="M 196 320 Q 188 318, 180 320"/>
-      <path d="M 190 260 Q 182 258, 174 260"/>
-      <path d="M 182 200 Q 174 198, 166 200"/>
-      <path d="M 174 150 Q 166 148, 158 150"/>
-    </g>
-    <g fill="#3d2818">
-      <circle cx="165" cy="115" r="6"/>
-      <circle cx="156" cy="110" r="5"/>
-      <circle cx="162" cy="125" r="5"/>
-    </g>
-    <g fill="url(#frondGradRight)">
-      <path d="M 160 100 Q 190 70, 215 50 Q 195 65, 180 85 Q 190 80, 205 75 Q 185 80, 170 95 Z"/>
-      <path d="M 160 100 Q 140 50, 110 20 Q 130 50, 140 80 Q 125 60, 115 50 Q 130 70, 145 90 Z"/>
-      <path d="M 160 100 Q 120 80, 80 80 Q 105 90, 125 95 Q 100 90, 85 95 Q 110 100, 135 105 Z"/>
-      <path d="M 160 100 Q 130 130, 100 160 Q 125 140, 140 130 Q 115 150, 105 165 Q 130 150, 145 140 Z"/>
-      <path d="M 160 100 Q 180 130, 195 165 Q 175 140, 165 125 Q 185 150, 190 170 Q 170 150, 160 135 Z"/>
-      <path d="M 160 100 Q 190 90, 220 95 Q 195 95, 175 105 Q 200 100, 215 110 Q 190 105, 170 110 Z"/>
-      <path d="M 160 100 Q 165 65, 170 30 Q 160 60, 158 85 Q 165 55, 170 45 Q 160 75, 155 95 Z"/>
-      <path d="M 160 100 Q 125 95, 90 110 Q 115 105, 135 105 Q 110 110, 95 120 Q 125 110, 145 110 Z"/>
-    </g>
-  </svg>
 
   <div class="hero-sparks" aria-hidden="true" hidden></div>
 
